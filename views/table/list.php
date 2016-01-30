@@ -101,7 +101,10 @@ if(!$_SESSION['login']){
 	<?php
 	$data_y = ($r3['data_y']) ? $r3['data_y'] : 0;
 	echo $data_y ?>px; 
-	background: red; cursor: pointer; 
+	background: #f9fb99; 
+	border-radius: 5px;
+	border: 2px solid #666;
+	 cursor: pointer; 
 	
 	}
 	<?php
@@ -111,11 +114,13 @@ if(!$_SESSION['login']){
 	$q_building1++;
 	}
 	?>
+	/*
 	.meja1 {
     background: url(../img/table_hikaru.png) no-repeat !important;
     display: table;
     width: 100%;
 	}
+	*/
 </style>
  
 <script type="text/javascript" src="../js/table/jquery.js"></script>
@@ -195,25 +200,6 @@ function handleDragStop_<?= $r4['table_id']?>( event, ui) {
 
 
  <div class="header_fixed"> 
- <div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
-						<button class="blue_color_button"  type="button">ADD ROOM</button>
-						<div class="morph-content">
-							<div>
-								<div class="content-style-form content-style-form-2">
-									<span class="icon icon-close">Close the dialog</span>
-									<h2>ADD ROOM</h2>
-									<form action="<?= $action_room?>" method="post" enctype="multipart/form-data" role="form">
-										<p><label>Room Name</label><input type="text" name="i_room_name" required  /></p>
-									
-										<p>
-										  <input type="submit" name="button" id="button" value="SAVE" class="button_building">
-										</p>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div><!-- morph-button -->
-                    
                     
                     
                      <div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
@@ -285,6 +271,7 @@ function handleDragStop_<?= $r4['table_id']?>( event, ui) {
 	}
 ?>
 
+<!--
 <div class="footer_fixed"> 
 
 			<div class="morph-button morph-button-sidebar morph-button-fixed">
@@ -309,10 +296,10 @@ function handleDragStop_<?= $r4['table_id']?>( event, ui) {
 					</div>
 				</div>
 			</div>
-		</div><!-- morph-button -->
+		</div>
         
        </div>
-   
+   -->
 
 	<script src="../js/progress_button/classie.js"></script>
 		<script src="../js/button_component/uiMorphingButton_fixed.js"></script>

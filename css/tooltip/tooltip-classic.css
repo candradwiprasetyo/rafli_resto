@@ -30,7 +30,7 @@ html, body{margin:0;  height:100%; }
 	text-align:center;
 	width:100%;
 	line-height: 85px;
-	font-size: 14px;
+	font-size: 32px;
 	color: #666;
 }
 
@@ -287,8 +287,8 @@ html, body{margin:0;  height:100%; }
 	width: 30px;
 	height: 30px;
 	line-height: 30px;
-	margin-top: -10px;
-	margin-left: 40px;
+	margin-top: -22px;
+	margin-left: 30px;
 	font-size: 15px;
 	border-radius:50%;
 	position:absolute;
@@ -301,8 +301,8 @@ html, body{margin:0;  height:100%; }
 	width: 30px;
 	height: 30px;
 	line-height: 30px;
-	margin-top: -10px;
-	margin-left: 70px;
+	margin-top: -22px;
+	margin-left: 62px;
 	font-size: 15px;
 	position:absolute;
 }

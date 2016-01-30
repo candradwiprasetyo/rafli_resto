@@ -56,9 +56,10 @@ function add_menu(id)
                                         
                                          <div class="form-group">
                                             <label>Email</label>
-                                            <input required type="email" name="i_email" class="form-control" placeholder="Masukkan email member..." value="<?= $row->member_email ?>"/>
+                                            <input type="email" name="i_email" class="form-control" placeholder="Masukkan email member..." value="<?= $row->member_email ?>"/>
                                         </div>
                   						
+                                      <!--
                                          <div class="form-group">
                                           <label>Type</label>
                                            <select name="i_discount_type" size="1" class="form-control"/>
@@ -81,6 +82,8 @@ function add_menu(id)
                                         <?php
 										}
 										?>
+
+                  -->
             
                                         
                                         

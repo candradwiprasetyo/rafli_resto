@@ -12,6 +12,7 @@ function select(){
 function select_building(){
 	$query = mysql_query("select a.*, b.branch_name from buildings a 
 							join branches b on b.branch_id = a.branch_id
+							where b.branch_type_id = '2'
 							order by building_id ");
 	return $query;
 }

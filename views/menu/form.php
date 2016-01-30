@@ -55,7 +55,7 @@
 											 ?>
                                            </select>                                    
                                   		</div>
-
+										<!--
 										    <div class="form-group">
                                             <label>HPP</label>
                                             <input required type="number" name="i_original_price" class="form-control" placeholder="Masukkan harga original ..." value="<?= $row->menu_original_price ?>"/>
@@ -65,7 +65,7 @@
                                             <label>Margin</label>
                                             <input required type="number" name="i_margin_price" class="form-control" placeholder="Masukkan margin ..." value="<?= $row->menu_margin_price ?>"/>
                                         </div>
-                                        
+                                        -->
                                           <div class="form-group">
                                             <label>Harga Jual</label>
                                             <input required type="number" name="i_price" class="form-control" placeholder="Masukkan harga ..." value="<?= $row->menu_price ?>"/>

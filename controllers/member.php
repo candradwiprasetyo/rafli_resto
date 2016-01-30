@@ -4,7 +4,7 @@ include '../lib/function.php';
 include '../models/member_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucwords("member");
+$title = ucwords("customer");
 
 $_SESSION['menu_active'] = 1;
 
@@ -162,7 +162,7 @@ switch ($page) {
 			}
 			
 			
-			header("Location: member.php?page=form&id=$id&did=1");
+			header("Location: member.php");
 
 		
 

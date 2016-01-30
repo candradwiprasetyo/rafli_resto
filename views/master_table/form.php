@@ -28,7 +28,7 @@
                                         </div>
                                       
                                         <div class="form-group">
-                                          <label>Ruang</label>
+                                          <label>Cabang</label>
                                            <select id="basic" name="i_building_id" size="1" class="selectpicker show-tick form-control" data-live-search="true" />
                                            <?php
                                            while($r_building = mysql_fetch_array($query_building)){

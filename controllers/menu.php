@@ -103,8 +103,8 @@ switch ($page) {
 
 		$i_name = get_isset($i_name);
 		$i_menu_type_id = get_isset($i_menu_type_id);
-		$i_original_price = get_isset($i_original_price);
-		$i_margin_price = get_isset($i_margin_price);
+		$i_original_price = get_isset($i_price);//get_isset($i_original_price);
+		$i_margin_price = 0; //get_isset($i_margin_price);
 		$i_price = get_isset($i_price);
 		$i_partner_id = get_isset($i_partner_id);
 		$i_out_time = get_isset($i_out_time);
@@ -169,8 +169,8 @@ switch ($page) {
 		$id = get_isset($_GET['id']);
 		$i_name = get_isset($i_name);
 		$i_menu_type_id = get_isset($i_menu_type_id);
-		$i_original_price = get_isset($i_original_price);
-		$i_margin_price = get_isset($i_margin_price);
+		$i_original_price = get_isset($i_price);//get_isset($i_original_price);
+		$i_margin_price = 0; //get_isset($i_margin_price);
 		$i_price = get_isset($i_price);
 		$i_partner_id = get_isset($i_partner_id);
 		$i_out_time = get_isset($i_out_time);

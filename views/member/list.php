@@ -59,9 +59,11 @@
                                                 <th>Nama </th>
                                                  <th>Telepon </th>
                                                  <th>Email</th>
+                                                 <!--
                                                   <th>Tipe Member</th>
                                                    <th>Diskon</th>
                                                     <th>Poin</th>
+                                                   -->
                                                    <th>Config</th> 
                                             </tr>
                                         </thead>
@@ -75,6 +77,7 @@
                                                <td><?= $row['member_name']?></td>
                                                <td><?= $row['member_phone']?></td>
                                                 <td><?= $row['member_email']?></td>
+                                               <!--
                                                <td>
 											    <?php
 												$disount_type_name = array('','Diskon Langsung',"Diskon Poin");
@@ -83,6 +86,7 @@
 											   <?= $disount_type_name[$row['member_discount_type']]?></td>
                                                <td><?= $row['member_discount']." %"?></td>
                                                <td><?= "Rp. ".$row['member_settlement']?></td>
+                                               -->
                                                <td style="text-align:center;">
 
                                                     <a href="member.php?page=form&id=<?= $row['member_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>

@@ -6,7 +6,7 @@ if(!$_SESSION['login']){
 <!doctype html>
 <html lang="en">
 <head>
-<title>.: Hikaru Resto :.</title>
+<title>Rafli Resto</title>
 
 		<!-- bootstrap 3.0.2 -->
 		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -106,7 +106,10 @@ if(!$_SESSION['login']){
 	<?php
 	$data_y = ($r3['data_y']) ? $r3['data_y'] : 0;
 	echo $data_y ?>px; 
-	background: red; cursor: pointer; 
+	background: #f9fb99; 
+	border-radius: 5px;
+	border: 2px solid #666;
+	cursor: pointer; 
 	
 	}
 	<?php
@@ -116,7 +119,8 @@ if(!$_SESSION['login']){
 	$q_building1++;
 	}
 	?>
-	.meja1 {
+	
+	/*.meja1 {
     background: url(../img/table_hikaru.png) no-repeat !important;
     display: table;
     width: 100%;
@@ -127,6 +131,7 @@ if(!$_SESSION['login']){
     display: table;
     width: 100%;
 	}
+	*/
 	
 </style>
  

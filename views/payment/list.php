@@ -8,7 +8,7 @@ if(!$_SESSION['login']){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>.: Hikaru Resto :.</title>
+        <title>Rafli Resto</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -91,7 +91,6 @@ if(!$_SESSION['login']){
             
           </div><!-- morph-button -->
 
-          <div class="logo_order"></div>
 
          
  </div>
@@ -130,7 +129,7 @@ if(!$_SESSION['login']){
                                 <div class="box-body2 table-responsive">
 
                                    <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
-                               <div class="col-md-8">
+                               <div class="col-md-12">
                                   <div class="row">
                                     <div class="payment_group">
                                      <b> Tipe Pembayaran</b>
@@ -385,16 +384,23 @@ if(!$_SESSION['login']){
                                   </div>
                                 </div>
 
-                                <div class="col-md-4" style="padding-left:0px;">  
-                                    <div class="payment_group">
-                                      <div class="struk_frame">
-                                    <div class="struk_title">
-                                      <b>HIKARU</b>
+                               
+</form>
+                              </div>
 
 
-                                    </div>
+                            </div><!-- /.box -->
+                        </div>
 
-                                    <table width="100%">
+                        <div class="col-md-3">
+                          <div class="payment_widget_frame">
+                            <div class="payment_widget_header">
+                              <div style="margin-bottom:10px; font-size:20px;"><?= "Table ". $table_name ?></div>
+                              <div><?= $transaction_code ?></div>
+                            </div>
+                            <div class="payment_widget_content">
+                              
+                                                                <table width="100%">
                                       <tr>
                                         <td>Table :</td>
                                         <td><?= $table_name ?></td>
@@ -416,8 +422,8 @@ if(!$_SESSION['login']){
                                         <tbody>
                                             <?php
                                            $no_item = 1;
-  											$total_price = 0;
-										   while($row_item = mysql_fetch_array($query)){
+                        $total_price = 0;
+                       while($row_item = mysql_fetch_array($query)){
                                             ?>
                                             <tr>
                                             <td width="10%" valign="top"><?= $row_item['transaction_detail_qty'] ?></td>
@@ -426,8 +432,8 @@ if(!$_SESSION['login']){
                                             <td align="right" valign="top"><?= number_format($row_item['transaction_detail_total']) ?></td>
                                             </tr>
                                             <?php
-											$no_item++;
-											 $total_price = $total_price + $row_item['transaction_detail_total'];
+                      $no_item++;
+                       $total_price = $total_price + $row_item['transaction_detail_total'];
                                             }
                                             ?>
 
@@ -453,77 +459,8 @@ if(!$_SESSION['login']){
                                     
                                         
                                     </table>
-						                      </div>
-                                </div>
-                                </form>
-                                </div><!-- /.box-body -->
-
-                              </div>
 
 
-                            </div><!-- /.box -->
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="payment_widget_frame">
-                            <div class="payment_widget_header">
-                              <div style="margin-bottom:10px; font-size:20px;"><?= "Table ". $table_name ?></div>
-                              <div><?= $transaction_code ?></div>
-                            </div>
-                            <div class="payment_widget_content">
-                              <div class="form-group">
-                              <div class="row">
-                                
-                                  <div class="col-md-6" style="padding:0px">
-                                    <a href="" class="btn payment_widget_button">Navigasi</a>
-                                  </div>
-                                  <div class="col-md-6"  style="padding-right:0px">
-                                    <a href="" class="btn payment_widget_button">Info</a>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="form-group">
-                                 <a href="" class="btn payment_widget_button">Split Bill</a>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="form-group">
-                                 <a href="" class="btn payment_widget_button">Laporan</a>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="form-group">
-                                 <a href="order.php?building_id=<?= $building_id?>" class="btn payment_widget_button">Daftar Transaksi</a>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="form-group">
-                                 <a href="reserved.php" class="btn payment_widget_button">Reservasi</a>
-                                </div>
-                              </div>
-
-                              <div class="form-group">
-                              <div class="row">
-                                
-                                  <div class="col-md-6" style="padding:0px">
-                                    <a href="" class="btn payment_widget_button">About</a>
-                                  </div>
-                                  <div class="col-md-6"  style="padding-right:0px">
-                                    <a href="" class="btn payment_widget_button">Setting</a>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="form-group">
-                                 <a href="logout.php" class="btn payment_widget_button">Logout</a>
-                                </div>
-                              </div>
 
                             </div>
                           </div>

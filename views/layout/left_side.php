@@ -36,10 +36,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="branch.php?page=list"><i class="fa fa-home"></i>Branch</a></li> 
-                                <li><a href="master_table.php?page=list"><i class="fa fa-cutlery"></i>Table</a></li>
+                                <li><a href="branch.php?page=list"><i class="fa fa-home"></i>Cabang</a></li> 
+                                <li><a href="master_table.php?page=list"><i class="fa fa-cutlery"></i>Meja</a></li>
                                 <li><a href="menu.php?page=list"><i class="fa fa-glass"></i>Menu</a></li>
-                                <li><a href="member.php?page=list"><i class="fa fa-user"></i>Member</a></li>
+                                <li><a href="member.php?page=list"><i class="fa fa-user"></i>Customer</a></li>
                                 <li><a href="supplier.php?page=list"><i class="fa fa-shopping-cart"></i>Supplier</a></li>
                                 <!--<li><a href="voucher.php?page=list"><i class="fa  fa-credit-card"></i>Voucher</a></li>
                                 <li><a href="partner.php?page=list"><i class="fa fa-smile-o"></i>Partner</a></li>

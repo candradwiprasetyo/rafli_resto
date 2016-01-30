@@ -4,7 +4,7 @@ include '../lib/function.php';
 include '../models/master_table_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucfirst("master table");
+$title = ucfirst("master meja");
 
 $_SESSION['menu_active'] = 1;
 
