@@ -116,6 +116,7 @@ switch ($page) {
 		$i_phone = get_isset($i_phone);
 		$i_city = get_isset($i_city);
 		$i_desc = get_isset($i_desc);
+		$i_type_id = get_isset($i_type_id);
 		
 		$path = "../img/branch/";
 		$i_img_tmp = $_FILES['i_img']['tmp_name'];
@@ -143,7 +144,9 @@ switch ($page) {
 							branch_desc = '$i_desc',
 							branch_address = '$i_address',
 							branch_phone = '$i_phone',
-							branch_city = '$i_city'
+							branch_city = '$i_city',
+							branch_type_id = '$i_type_id'
+							
 
 					";
 				}
@@ -154,11 +157,16 @@ switch ($page) {
 							branch_desc = '$i_desc',
 							branch_address = '$i_address',
 							branch_phone = '$i_phone',
-							branch_city = '$i_city'
+							branch_city = '$i_city',
+							branch_type_id = '$i_type_id'
 					";
 			}
 			
 		update($data, $id);
+		
+		$data_building = "building_name = '$i_name'";
+		
+		update_building($data_building, $id);
 			
 			header('Location: branch.php?page=list&did=2');
 		

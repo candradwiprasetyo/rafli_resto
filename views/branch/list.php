@@ -60,6 +60,7 @@
                                                 <th>Image</th>
                                                 <th>Phone</th>
                                                 <th>City</th>
+                                                <th>Type</th>
                                                 <th>Config</th> 
                                             </tr>
                                         </thead>
@@ -80,6 +81,8 @@
 											    echo $image ?>" height="80" /></td>
                                                  <td><?= $row['branch_phone'] ?></td>
                                                   <td><?= $row['branch_city'] ?></td>
+                                               <td><?= ($row['branch_type_id'] == 1) ?  "Pabrik" : "Cabang Resto";   ?></td>
+                                               
                                                <td style="text-align:center;">
 
                                                     <a href="branch.php?page=form&id=<?= $row['branch_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>

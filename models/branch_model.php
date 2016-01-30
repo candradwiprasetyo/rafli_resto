@@ -37,6 +37,10 @@ function update($data, $id){
 	mysql_query("update branches set ".$data." where branch_id = '$id'");
 }
 
+function update_building($data, $id){
+	mysql_query("update buildings set ".$data." where branch_id = '$id'");
+}
+
 function delete($id){
 	mysql_query("delete from branches where branch_id = '$id'");
 	

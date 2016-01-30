@@ -26,7 +26,15 @@
                                             <label>Nama</label>
                                             <input required type="text" name="i_name" class="form-control" placeholder="Masukkan nama ..." value="<?= $row->branch_name ?>"/>
                                         </div>
-
+                                        
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                           <select id="basic" name="i_type_id" size="1" class="selectpicker show-tick form-control" data-live-search="true" />
+                                             <option value="1" <?php if($row->branch_type_id == 1){ ?> selected="selected"<?php } ?>>Pabrik</option>
+                                             <option value="2" <?php if($row->branch_type_id == 2){ ?> selected="selected"<?php } ?>>Cabang Resto</option>
+                                           </select>  
+                                        </div>
+	
                                         <div class="form-group">
                                             <label>Phone</label>
                                             <input required type="text" name="i_phone" class="form-control" placeholder="Masukkan telepon..." value="<?= $row->branch_phone ?>"/>
