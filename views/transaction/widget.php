@@ -9,7 +9,7 @@
                              
                                
                                     <table id="" class="" style="margin-bottom:0px;">
-                                        <thead style="color:#fff; background:#D82827; height:30px; line-height:30px;">
+                                        <thead style="color:#fff; background:#61c161; height:30px; line-height:30px;">
                                             <tr>
                                             <th width="5%" style="padding:10px">Jumlah</th>
                                                 <th  style="padding:10px">Nama Menu</th>
@@ -98,7 +98,7 @@
                         <div class="box" style="padding:10px;">
                         <div class="row">
                         <div class="col-md-6">    
-                            <a href="transaction.php?page=reset&table_id=<?= $table_id ?>" class="btn btn-danger btn-block " >Reset</a>
+                            <a href="transaction.php?page=reset&table_id=<?= $table_id ?>" class="btn btn-success btn-block " >Reset</a>
                         </div>
 
                           <div class="col-md-6">    

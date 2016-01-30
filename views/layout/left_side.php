@@ -37,15 +37,15 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="branch.php?page=list"><i class="fa fa-home"></i>Branch</a></li> 
-                                <li><a href="building.php?page=list"><i class="fa fa-home"></i>Room</a></li> 
                                 <li><a href="master_table.php?page=list"><i class="fa fa-cutlery"></i>Table</a></li>
                                 <li><a href="menu.php?page=list"><i class="fa fa-glass"></i>Menu</a></li>
-                                <li><a href="partner.php?page=list"><i class="fa fa-smile-o"></i>Partner</a></li>
                                 <li><a href="member.php?page=list"><i class="fa fa-user"></i>Member</a></li>
                                 <li><a href="supplier.php?page=list"><i class="fa fa-shopping-cart"></i>Supplier</a></li>
-                                <li><a href="voucher.php?page=list"><i class="fa  fa-credit-card"></i>Voucher</a></li>
+                                <!--<li><a href="voucher.php?page=list"><i class="fa  fa-credit-card"></i>Voucher</a></li>
+                                <li><a href="partner.php?page=list"><i class="fa fa-smile-o"></i>Partner</a></li>
+                                <li><a href="building.php?page=list"><i class="fa fa-home"></i>Room</a></li> 
                                 
-                                <!--
+                                
                                 <li><a href="unit.php?page=list"><i class="fa fa-user"></i>Unit</a></li>
                                 <li><a href="bank.php?page=list"><i class="fa fa-user"></i>Bank Account</a></li>
                                 -->
@@ -60,7 +60,7 @@
                             </a>
                             
                   </li>
-                  <!--
+                  
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
                             <a href="transaction.php">
                                  <i class="fa fa-pencil-square-o"></i>
@@ -68,7 +68,7 @@
                             </a>
                             
                   </li>
-                  
+                  <!--
                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
                             <a href="transaction_new.php">
                                  <i class="fa fa-pencil-square-o"></i>
@@ -76,7 +76,7 @@
                             </a>
                             
                   </li>
-                  -->
+                  
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 5){ echo "class='active'"; } ?>>
                             <a href="reserved.php">
                                  <i class="fa fa-list-alt"></i>
@@ -84,7 +84,7 @@
                             </a>
                             
                   </li>
-                  
+                  -->
                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
                             <a href="table.php">
                                  <i class="fa fa-asterisk"></i>

@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-white home_back1">
+                            <div class="small-box bg-white">
                                 <div class="inner">
                                     <h3>
                                         <?= $date_now ?>
@@ -59,7 +59,7 @@
                                        Tanggal
                                     </p>
                                 </div>
-                                <div class="icon home_icon1">
+                                <div class="icon">
                                     
                                 </div>
                                 
@@ -67,7 +67,7 @@
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-white home_back2">
+                            <div class="small-box bg-white">
                                 <div class="inner">
                                     <h3>
                                         <?= $jumlah_penjualan ?>
@@ -76,14 +76,14 @@
                                         Jumlah Penjualan
                                     </p>
                                 </div>
-                                <div class="icon home_icon2">
+                                <div class="icon">
                                 </div>
                                
                             </div>
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-white home_back3">
+                            <div class="small-box bg-white">
                                 <div class="inner">
                                     <h3>
                                         <?php echo "<span style='font-size:20px'>Rp. </span>".$total_omset ?>
@@ -92,13 +92,13 @@
                                         Total Omset 
                                     </p>
                                 </div>
-                                <div class="icon home_icon3">
+                                <div class="icon">
                                 </div>
                             </div>
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-white home_back4" >
+                            <div class="small-box bg-white" >
                                 <div class="inner" style="height:90px;">
                                     <h3 style="font-size:16px;">
                                        <?= $menu_terlaris?>
@@ -107,7 +107,7 @@
                                        Menu Terlaris
                                     </p>
                                 </div>
-                                <div class="icon home_icon4">
+                                <div class="icon">
                                    
                                 </div>
                               
@@ -115,6 +115,7 @@
                         </div><!-- ./col -->
                     </div><!-- /.row -->
 
+                    <!--
                     <div class="row">
                     <div class="col-xs-12">
                    <img src="../img/new/home.jpg" style="width:100%;" />
@@ -125,11 +126,12 @@
                                 <div class="box-body2 table-responsive" style="padding:20px; text-align:center;">
                                    <h2>Hikaru</h2>
                                   <h4>Resto</h4>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
+                -->
                     
                   <!-- TOP Food-->
                   <div class="row">

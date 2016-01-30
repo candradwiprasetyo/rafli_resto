@@ -1,6 +1,5 @@
 ﻿<script type="text/javascript" src="../js/search2/jcfilter.min.js"></script>
 
-
 <script type="text/javascript">
 
 function filter_cat(){
@@ -188,8 +187,7 @@ function load_data_history(id)
                                         $query_table = mysql_query("select a.*, b.building_name
 																	from tables a
 																	left join buildings b on b.building_id = a.building_id
-                                  
-																	order by table_id
+                                  order by table_id
 																	");
                                         while($row_table = mysql_fetch_array($query_table)){
                                         ?>
@@ -199,7 +197,7 @@ function load_data_history(id)
 										}else{
 											$building= "";
 										}
-										echo $row_table['table_name'].$building; ?></option>
+										echo $row_table['table_name']; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -427,7 +425,7 @@ function load_data_history(id)
                 </div>
                  <div class="col-xs-4">
                    <div class="form-group">
-                  <input class="btn btn-danger button_checkout" type="submit" value="SAVE"/>
+                  <input class="btn btn-success button_checkout" type="submit" value="SAVE"/>
                 </div>
             </div>
                 </div>

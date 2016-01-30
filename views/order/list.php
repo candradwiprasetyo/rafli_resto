@@ -148,7 +148,6 @@ if(!$_SESSION['login']){
 						
 					</div><!-- morph-button -->
 
-					<div class="logo_order"></div>
 
 					<div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed" style="float:right; right:20px;">
 						<button class="logout_color_button" type="button">LOGOUT</button>
@@ -165,7 +164,8 @@ if(!$_SESSION['login']){
 								</div>
 							</div>
 						</div>
-					</div><!-- morph-button -->
+					</div>
+
  </div>
  
  
@@ -182,7 +182,7 @@ if(!$_SESSION['login']){
 <div id="content_new">
 	
    <?php
-	$query =  mysql_query("select * from tables where building_id = '".$r_building4['building_id']."' and tms_id <> '2' order by table_id");
+	$query =  mysql_query("select * from tables where building_id = '".$r_building4['building_id']."'  order by table_id");
 	while($row = mysql_fetch_array($query)){
 		
 		$get_item_ordered = get_item_ordered($row['table_id']);
@@ -190,7 +190,7 @@ if(!$_SESSION['login']){
 		
 	?>
 	<span class="tooltip tooltip-effect-1">
-	<div id="makeMeDraggable_<?= $row['table_id']?>" <?php if($row['tms_id']==1){ ?>class="meja2" <?php  }else{ ?>class="meja1"<?php } ?>>
+	<div id="makeMeDraggable_<?= $row['table_id']?>" class="meja1">
 	
 				
 				<div class="tooltip-item"><?= $row['table_name'] ?>
@@ -255,7 +255,7 @@ if(!$_SESSION['login']){
 	}
 ?>
 
-
+<!--
 <div class="footer_fixed"> 
 			<div class="morph-button morph-button-sidebar morph-button-fixed">
 			<button type="button" class="red_color_button"><?= $branch_name?></button>
@@ -279,7 +279,7 @@ if(!$_SESSION['login']){
 					</div>
 				</div>
 			</div>
-		</div><!-- morph-button -->
+		</div>
 
 		<div class="morph-button morph-button-sidebar morph-button-fixed" style="
     bottom: 10px;
@@ -305,12 +305,12 @@ if(!$_SESSION['login']){
 					</div>
 				</div>
 			</div>
-		</div><!-- morph-button -->
-	 
+		</div>
 		<?php
         include 'jumlah_meja.php';
 		?>
-   </div>     
+   </div>
+   -->     
 <div class="md-overlay"></div>
       
      

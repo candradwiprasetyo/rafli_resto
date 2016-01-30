@@ -25,9 +25,9 @@
     </head>
     <body >
 
-        <div class="login_logo"></div>
-        <div class="form-box" id="login-box">
-            <div class="header"><div class="bg-logo"><span style="font-size: 3em !important;"><strong>Login</strong></span></div></div>
+        <!--<div class="login_logo"></div>-->
+        <div class="form-box" id="login-box" style="margin-top:150px;">
+            <div class="header"><div class="bg-logo"><span style="font-size: 3em !important; color:#666"><strong>Login</strong></span></div></div>
             <form action="controllers/login.php?page=login" method="post">
                 <div class="body bg-white">
                     <?php
@@ -50,7 +50,7 @@
                         <input style="border:1px solid #eee;" required type="password" name="i_password" class="form-control" placeholder="Password"/>
                     </div>   
                     <div class="form-group">
-                      <button type="submit" class="btn btn-danger btn-block" style="margin-top:10px;">LOGIN</button>  
+                      <button type="submit" class="btn btn-success btn-block" style="margin-top:10px;">LOGIN</button>  
                     </div>          
                   
                 </div>

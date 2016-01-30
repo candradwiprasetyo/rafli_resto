@@ -16,7 +16,9 @@ html {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
-       background: url('../img/new/background.gif') repeat;
+  /*background: url('../img/background/1.jpg') fixed;
+  background-size: cover;*/
+  background: #E9EAED;
 
 }
 body {
@@ -229,7 +231,7 @@ img {
   background-color: #3c8dbc !important;
 }
 .bg-new-red{
-   background-color: #D82827  !important;
+   background-color: #61c161  !important;
 }
 .bg-green {
   background-color: #00a65a !important;
@@ -379,13 +381,12 @@ body > .header {
   position: relative;
   max-height: 100px;
   z-index: 1030;
-  padding: 20px;
 }
 body > .header .navbar {
   height: 80px;
   margin-bottom: 0;
   margin-left: 250px;
-  border: 1px solid #FF3030;
+  
 }
 body > .header .navbar .sidebar-toggle {
   float: left;
@@ -446,10 +447,9 @@ body > .header .logo {
   float: left;
   font-size: 14px;
   padding-top:20px;
-  width: 230px;
+  width: 250px;
   height: 80px;
   display: block;
-  border: 1px solid #FF3030;
 }
 body > .header .logo .icon {
   margin-right: 10px;
@@ -599,7 +599,7 @@ body > .header .logo .icon {
 }
 .user-panel {
   padding: 10px;
-  background: #d82827;
+  background: #f6f6f6;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -615,6 +615,7 @@ body > .header .logo .icon {
   width: 60px;
   height: 60px;
   margin-right: 10px;
+  border: 2px solid #ccc;
 }
 .user-panel > .info {
   font-weight: 600;
@@ -922,7 +923,7 @@ body > .header .logo .icon {
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
   height: 175px;
   padding: 10px;
-  background: #D82827;
+  background: #61c161;
   text-align: center;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
@@ -1207,10 +1208,10 @@ body > .header .logo .icon {
   -moz-border-radius: 2px;
   border-radius: 2px;
   margin-bottom: 15px;
-  color: #fc3339;
+  color: #61c161;
   font-weight: bold;
-  border: 1px solid #fc3339;
-  height: 110px;
+  height: 110px;    
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .small-box > .inner {
@@ -1322,7 +1323,6 @@ body > .header .logo .icon {
   width: 100%;
   background:#fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #FF3030;
   
 }
 
@@ -1374,7 +1374,7 @@ body > .header .logo .icon {
   border-bottom-left-radius: 0;
   border-bottom: 1px solid #f4f4f4;
   color:#fff;
-  background:#DD4B39;
+  background:#61c161;
 }
 .box .box-header:before,
 .box .box-header:after {
@@ -2396,7 +2396,7 @@ Component: timeline
 .form-box {
   width: 360px;
   margin: 10px auto 0 auto;
- box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.1);
+ box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
  border-radius: 5px;
 
 }
@@ -2586,7 +2586,7 @@ Component: timeline
 .skin-blue .navbar .nav .open > a,
 .skin-blue .navbar .nav .open > a:hover,
 .skin-blue .navbar .nav .open > a:focus {
-  background: #D82827;
+  background: #61c161;
   color: #f6f6f6;
 }
 .skin-blue .navbar .navbar-right > .nav a {
@@ -2594,15 +2594,15 @@ Component: timeline
   height:80px;
 }
 .skin-blue .navbar .sidebar-toggle .icon-bar {
-  background: #FF3030;
+  background: #61c161;
 }
 /* skin-blue logo */
 
 .skin-blue .logo {
-  background-color: #fff;
+  background-color: #61c161;
   color: #333;
   font-family: arial;
-  background: url('../img/new/logo.png') #fff no-repeat top center;
+  /*background: url('../img/new/logo.png') #fff no-repeat top center;*/
 }
 .skin-blue .logo > a {
   color: #333;
@@ -2617,12 +2617,12 @@ Component: timeline
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
-  color: #fff;
+  color: #666;
 }
 /* skin-blue sidebar */
 .skin-blue .sidebar {
   border-bottom:1px solid #ddd;
-  border: 1px solid #FF3030;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .skin-blue .sidebar > .sidebar-menu > li {
   border-top:1px solid  #ddd; 
@@ -2644,7 +2644,7 @@ Component: timeline
 .skin-blue .sidebar > .sidebar-menu > li > a:hover,
 .skin-blue .sidebar > .sidebar-menu > li.active > a {
   color: #fff;
-  background:#d82827;
+  background:#61c161;
   
 }
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
@@ -2652,19 +2652,15 @@ Component: timeline
   background: #f6f6f6;
 }
 .skin-blue .left-side {
-  background: none;
-  -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
-  box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07);
-  padding-left: 20px;
-  padding-top: 20px;
+  background: #f6f6f6;
+
+
 
 }
 .skin-blue .sidebar a {
   color: #373737;
-   text-transform:uppercase;
- 
-  font-size:14px;
+  
+  font-size:13px;
   font-weight: bold;
 }
 .skin-blue .sidebar a:hover {
@@ -2948,7 +2944,7 @@ Component: timeline
 	height:50px;
 	color:#fff;
 	border:none !important;
-	background:#d82827;
+	background:#61c161;
 }
 .title_menu{
 	
@@ -2973,7 +2969,7 @@ Component: timeline
 	 position:fixed;
 	 width:100%;
    padding-right: 250px;
-   border: 1px solid #d82827;
+   border: 1px solid #61c161;
    z-index:9999;
    
 }
@@ -3100,7 +3096,7 @@ Component: timeline
 	}
 
   .note_frame{
-    border:1px solid #D82827;
+    border:1px solid #61c161;
     padding: 10px;
   }
 
@@ -3211,7 +3207,7 @@ Component: timeline
   font-weight: bold;
   font-size: 18px !important;
   height: 50px;
-  color: #d82827;
+  color: #61c161;
 }
 
 .button_close_payment{
@@ -3224,7 +3220,7 @@ Component: timeline
   height: 50px;
   line-height: 38px;
   margin-left: 10px;
-  color: #d82827;
+  color: #61c161;
   width: 90%;
 }
 
@@ -3236,7 +3232,7 @@ Component: timeline
   padding: 15px;
   color: #fff;
   font-weight: bold;
-  background: #d82827;
+  background: #61c161;
 }
 
 .payment_widget_content{
@@ -3267,7 +3263,7 @@ Component: timeline
   width: 100%;
   height: 71px;
   line-height: 71px;
-  background: #d82827;
+  background: #61c161;
   color: #fff;
 font-weight: bold;
 text-align: center;
@@ -3282,7 +3278,7 @@ cursor: pointer;
   width: 100%;
   height: 70px;
   line-height: 70px;
-  background: #d82827;
+  background: #61c161;
   color: #fff;
 font-weight: bold;
 text-align: center;
@@ -3296,16 +3292,16 @@ cursor: pointer;
 
 
 .btn_cat_button{
-  border:1px solid #D82827;
+  border:1px solid #61c161;
   border-radius: 0px;
   font-size: 13px !important;
   font-weight: bold;
-  color: #D82827;
+  color: #61c161;
 }
 
 .btn_cat_button_active{
-  border:1px solid #D82827;
-  background: #D82827;
+  border:1px solid #61c161;
+  background: #61c161;
   border-radius: 0px;
   font-size: 13px !important;
   font-weight: bold;
