@@ -27,7 +27,7 @@
 
         <!--<div class="login_logo"></div>-->
         <div class="form-box" id="login-box" style="margin-top:150px;">
-            <div class="header"><div class="bg-logo"><span style="font-size: 3em !important; color:#666"><strong>Login</strong></span></div></div>
+            <div class="header"><div class="bg-logo"><span style="font-size: 3em !important; color:#666"><strong>Mochi Maco</strong></span></div></div>
             <form action="controllers/login.php?page=login" method="post">
                 <div class="body bg-white">
                     <?php

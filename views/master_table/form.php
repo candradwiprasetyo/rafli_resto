@@ -33,18 +33,19 @@
                                            <?php
                                            while($r_building = mysql_fetch_array($query_building)){
 										   ?>
-                                             <option value="<?= $r_building['building_id'] ?>" <?php if($row->building_id == $r_building['building_id']){ ?> selected="selected"<?php } ?>><?= $r_building['building_name']?> (<?= $r_building['branch_name']?>)</option>
+                                             <option value="<?= $r_building['building_id'] ?>" <?php if($row->building_id == $r_building['building_id']){ ?> selected="selected"<?php } ?>><?= $r_building['branch_name']?></option>
                                              <?php
 										   }
 											 ?>
                                            </select>                                    
                                   		</div>
             							
+                                        <!--
                                         <div class="form-group">
                                             <label>Jumlah Kursi</label>
                                             <input required type="text" name="i_chair_number" class="form-control" placeholder="Masukkan jumlah kursi..." value="<?= $row->chair_number ?>"/>
                                         </div>
-                                        
+                                        -->
                                         
                                         </div>
                                        

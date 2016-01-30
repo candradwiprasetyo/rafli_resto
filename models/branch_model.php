@@ -25,6 +25,12 @@ function read_id($id){
 
 function create($data){
 	mysql_query("insert into branches values(".$data.")");
+	$id = mysql_insert_id();
+	return $id;
+}
+
+function create_building($data){
+	mysql_query("insert into buildings values(".$data.")");
 }
 
 function update($data, $id){
@@ -33,6 +39,8 @@ function update($data, $id){
 
 function delete($id){
 	mysql_query("delete from branches where branch_id = '$id'");
+	
+	mysql_query("delete from buildings where branch_id = '$id'");
 }
 function get_img_old($id){
 	$query = mysql_query("select branch_img

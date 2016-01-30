@@ -41,6 +41,7 @@ switch ($page) {
 			$row->branch_city = false;
 			$row->branch_desc = false;
 			$row->branch_img = false;
+			$row->branch_type_id = false;
 			
 			$action = "branch.php?page=save";
 		}
@@ -58,6 +59,7 @@ switch ($page) {
 		$i_phone = get_isset($i_phone);
 		$i_city = get_isset($i_city);
 		$i_desc = get_isset($i_desc);
+		$i_type_id = get_isset($i_type_id);
 		
 		$path = "../img/branch/";
 		$i_img_tmp = $_FILES['i_img']['tmp_name'];
@@ -78,12 +80,22 @@ switch ($page) {
 					'$i_desc',
 					'$i_address',
 					'$i_phone',
-					'$i_city'
+					'$i_city',
+					'$i_type_id'
 			";
 			
 			//echo $data;
 
-		create($data);
+		$branch_id = create($data);
+		
+		$data_building = "'',
+					'$i_name',
+					'',
+					'$branch_id'
+					
+			";
+		
+		create_building($data_building);
 		
 		if($i_img){
 			move_uploaded_file($i_img_tmp, $path.$image);

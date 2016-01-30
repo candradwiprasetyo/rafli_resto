@@ -61,12 +61,17 @@
                             
                   </li>
                   
-                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
-                            <a href="transaction.php">
-                                 <i class="fa fa-pencil-square-o"></i>
+                  <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "active"; }?>">
+                            <a href="#">
+                                <i class="fa fa-list-alt"></i>
                                 <span>Transaksi</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                            
+                            <ul class="treeview-menu">
+                                <li><a href="transaksi_produksi.php"><i class="fa fa-list-alt"></i>Transaksi Produksi</a></li> 
+                                <li><a href="transaksi_internal.php"><i class="fa fa-list-alt"></i>Transaksi Internal</a></li>
+                                
+                            </ul>
                   </li>
                   <!--
                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>

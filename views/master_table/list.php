@@ -57,10 +57,8 @@
                                             <tr>
                                             <!--<th width="5%">No</th>-->
                                                 <th>Nomor Meja</th>
-                                                <th>Ruang</th>
-                                                <th>Jumlah Kursi</th>
-                                                 <th>Cabang</th>
-                                                   <th>Config</th> 
+                                                <th>Cabang</th>
+                                                <th>Config</th> 
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,8 +69,6 @@
                                             <tr>
                                             <!--<td><?= $no?></td>-->
                                                <td><?= $row['table_name']?></td>
-                                                <td><?php echo $row['nama_gedung']?></td>
-                                                <td><?php echo $row['chair_number']?></td>
                                                 <td><?php echo $row['branch_name']?></td>
                                               <td style="text-align:center;">
 
