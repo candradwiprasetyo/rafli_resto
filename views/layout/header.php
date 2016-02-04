@@ -7,7 +7,7 @@ if(!$_SESSION['login']){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Rafli Resto</title>
+        <title>Mochi Maco</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -74,7 +74,7 @@ if(!$_SESSION['login']){
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                
-                  <td width="86%" align="center"><span style="font-size:14px; font-weight:bold; color:#fff">Rafli</span><br><span style="font-weight:bold; color:#fff">RESTO</span></td>
+                  <td width="86%" align="center"><span style="font-size:14px; font-weight:bold; color:#fff">Mochi</span><br><span style="font-weight:bold; color:#fff">MACO</span></td>
               </tr>
               </tr>
             </table>

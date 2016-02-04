@@ -85,6 +85,10 @@ function delete($id){
 	mysql_query("delete from purchases where purchase_id = '$id'");
 }
 
+function payment($id){
+	mysql_query("update purchases set purchase_status = '1', purchase_payment_date = '".date("Y-m-d")."'  where purchase_id = '$id'");
+}
+
 function get_item_name($item_id){
 	$query = mysql_query("select item_name as result from items where item_id= '$item_id'");
 	$row = mysql_fetch_array($query);

@@ -146,8 +146,8 @@ function go_to_payment(){
             
             <div class="col-xs-4">
            <div class="form-group">
-                                            <label>Code</label>
-                                            <input <? if ($row->transaction_production_id) {?> readonly <? }?> required type="text" id="i_code" name="i_code" class="form-control" placeholder="Masukkan code transaksi....." value="<?=$row->transaction_production_code ?>"/>
+                                            <label>Kode</label>
+                                            <input <? if ($row->transaction_production_id) {?> readonly <? }?> required type="text" id="i_code" name="i_code" class="form-control" placeholder="Masukkan kode produksi" value="<?=$row->transaction_production_code ?>"/>
                                             <input type="hidden" name="i_user" value="<?=$row->user_id ?>" >
                                             <input type="hidden" name="row_id" id="row_id" value="<?=$row->transaction_production_id ?>" >
                                         </div>
@@ -168,16 +168,19 @@ function go_to_payment(){
             
              <div class="col-xs-4">
              <div class="form-group">
-                                         <label>Items </label>
+                                         <label>Nama Item </label>
                                         <select name="i_item" id="i_item" <? if ($row->transaction_production_id) {?> disabled <? }?>  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data(this.value)" >
                                          <?php
-                                        $query_item7 = mysql_query("select * from items order by item_id
+                                        $query_item7 = mysql_query("select a.*, b.unit_name 
+                                                    from items a 
+                                                    join units b on b.unit_id = a.unit_id
+                                                    order by item_id
 																	");
                                         while($row_item7 = mysql_fetch_array($query_item7)){
                                         ?>
                                         <option value="<?= $row_item7['item_id']?>"><?php
 										
-										echo $row_item7['item_name']; ?></option>
+										echo $row_item7['item_name']." (".$row_item7['unit_name'].")"; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -210,14 +213,14 @@ function go_to_payment(){
             <div class="col-xs-4">
            <div class="form-group">
                                             <label>Target</label>
-                                            <input required type="text" <? if ($row->transaction_production_id) {?> readonly <? }?> id="i_target" name="i_target" class="form-control" placeholder="Masukkan code target....." value="<?=$row->transaction_production_target ?>"/>
+                                            <input required type="text" <? if ($row->transaction_production_id) {?> readonly <? }?> id="i_target" name="i_target" class="form-control" placeholder="Masukkan target produksi" value="<?=$row->transaction_production_target ?>"/>
                                         </div>
             </div>
             
             <div class="col-xs-4">
            <div class="form-group">
                                             <label>Hasil</label>
-                                            <input required <? if (!$row->transaction_production_id) {?> readonly <? }?> type="text" id="i_hasil" name="i_hasil" class="form-control" placeholder="Masukkan code hasil....." value="<?=$row->transaction_production_hasil ?>"/>
+                                            <input required <? if (!$row->transaction_production_id) {?> readonly <? }?> type="text" id="i_hasil" name="i_hasil" class="form-control" placeholder="Masukkan hasil produksi" value="<?=$row->transaction_production_hasil ?>"/>
                                         </div>
             </div> 
             
@@ -275,13 +278,16 @@ function go_to_payment(){
                                           <select name="i_menu_id" id="i_menu_id"  class="selectpicker show-tick form-control" data-live-search="true" onchange="add_menu(this.value)" >
                                           <option value="0">Add Item</option>
                                         <?php
-                                        $query_item = mysql_query("select * from items order by item_id
+                                        $query_item = mysql_query("select a.*, b.unit_name 
+                                                                    from items a
+                                                                    join units b on b.unit_id = a.unit_id
+                                                                    order by item_name
 																	");
                                         while($row_item = mysql_fetch_array($query_item)){
                                         ?>
                                         <option value="<?= $row_item['item_id']?>"><?php
 										
-										echo $row_item['item_name']; ?></option>
+										echo $row_item['item_name']." (".$row_item['unit_name'].")"; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -299,6 +305,7 @@ function go_to_payment(){
                              
                    </div><!-- /.box -->
                              <a href="javascript: go_to_payment()"  class="btn btn-success" >SAVE</a>
+                             <a href="<?= $close_button ?>"  class="btn btn-danger" >CLOSE</a>
 
                         </div>
                         

@@ -54,6 +54,8 @@ switch ($page) {
 			$row->purchase_total = false;
 			$row->supplier_id = false;
 			$row->branch_id = false;
+			$row->purchase_payment_type = false;
+			$row->purchase_code = false;
 			
 			$action = "purchase.php?page=save";
 		}
@@ -75,6 +77,17 @@ switch ($page) {
 		//$i_total = get_isset($i_total);
 		$i_supplier = get_isset($i_supplier);
 		$i_branch_id = get_isset($i_branch_id);
+		$i_payment_type = get_isset($i_payment_type);
+		if($i_payment_type == 1){
+			$status = 1;
+			
+		}else{
+			$status = 2;
+
+		}
+		$i_code = get_isset($i_code);
+
+		$tanggal = date("Y-m-d");
 		
 		$get_item_name = get_item_name($i_item_id);
 		
@@ -85,7 +98,11 @@ switch ($page) {
 					'$i_harga',
 					'0',
 					'$i_supplier',
-					'$i_branch_id'
+					'$i_branch_id',
+					'$i_payment_type',
+					'$status',
+					'$tanggal',
+					'$i_code'
 			";
 			
 			//echo $data;
@@ -117,6 +134,9 @@ switch ($page) {
 		//$i_total = get_isset($i_total);
 		$i_supplier = get_isset($i_supplier);
 		$i_branch_id = get_isset($i_branch_id);
+
+		$i_code = get_isset($i_code);
+
 		
 					$data = " purchase_date = '$i_date',
 					stock_id = '$i_stock_id', 
@@ -124,7 +144,8 @@ switch ($page) {
 					purchase_price = '$i_harga',
 					purchase_total = '0',
 					supplier_id = '$i_supplier',
-					branch_id = '$i_branch_id'
+					branch_id = '$i_branch_id',
+					purchase_code = '$i_code'
 
 					";
 			
@@ -143,6 +164,16 @@ switch ($page) {
 		delete($id);
 
 		header('Location: purchase.php?page=list&did=3');
+
+	break;
+
+	case 'payment':
+
+		$id = get_isset($_GET['id']);	
+
+		payment($id);
+
+		header('Location: purchase.php?page=list&did=4');
 
 	break;
 }

@@ -49,7 +49,11 @@
                                         </div><!-- /.input group -->
             </div>
             
-                                        
+                                        <div class="form-group">
+                                            <label>Kode Transaksi</label>
+                                            <input required type="text" name="i_code" id="i_code" class="form-control" placeholder="Masukkan kode transaksi..." value="<?= $row->purchase_code ?>"/>
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Nama Barang</label>
                                             <select id="basic" name="i_item_id" size="1" class="selectpicker show-tick form-control" data-live-search="true" />
@@ -100,6 +104,18 @@
 										   }
 											 ?>
                                            </select>                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Tipe pembayaran</label>
+                                            
+                                           <select id="basic" name="i_payment_type" size="1" class="form-control"/>
+                                           
+                                             <option value="1" <?php if($row->purchase_payment_type == 1){ ?> selected="selected"<?php } ?>>Tunai</option>
+                                            <option value="2" <?php if($row->purchase_payment_type == 2){ ?> selected="selected"<?php } ?>>Hutang</option>
+                                           
+                                           </select>    
+
                                         </div>
                                         
                                         

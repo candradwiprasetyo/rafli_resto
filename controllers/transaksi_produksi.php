@@ -69,6 +69,7 @@ switch ($page) {
 	case 'add_menu';
 		$item_id = get_isset($_GET['item_id']);	
 		
+		
 		$data = "'',
 					'0',
 					'$item_id',

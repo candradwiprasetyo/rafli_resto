@@ -33,12 +33,13 @@ Meja masih kosong
 
 <div class="row">
 <div class="form-group">
-<div class="col-xs-6" style="padding:3px;"><a href="transaction.php?table_id=<?= $row['table_id']?>" style="text-decoration:none;"><div class="btn_add_order">ADD ORDER</div></a>
+<div class="col-xs-12" style="padding:3px;"><a href="transaction.php?table_id=<?= $row['table_id']?>" style="text-decoration:none;"><div class="btn_add_order">ADD ORDER</div></a>
 </div>
-
+<!--
 <div class="col-xs-6" style="padding:3px;">
 <a href="order.php?page=merger_table&table_id=<?= $row['table_id']?>&building_id=<?= $building_id?>" style="text-decoration:none;"><div class="btn_merger">MERGER</div></a>
 </div>
+-->
 </div>
 </div>
 

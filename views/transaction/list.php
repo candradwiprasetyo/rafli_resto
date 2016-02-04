@@ -171,7 +171,7 @@ function load_data_history(id)
                                   ");
                                         while($row_tot = mysql_fetch_array($query_tot)){
                                         ?>
-                                        <option value="<?= $row_tot['tot_id']?>">
+                                        <option value="<?= $row_tot['tot_id']?>" <?php if($row_tot['tot_id'] == $tot_id){ ?> selected="selected"<?php }?>>
                                           <?= $row_tot['tot_name']; ?></option>
                                         <?php
                                         }
@@ -182,28 +182,22 @@ function load_data_history(id)
             
              <div class="col-md-4">
              <div class="form-group">
-                                        <label>Table </label>
-                                        <select name="i_table_id" id="i_table_id"  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_history(this.value)" >
+                                        <label>Customer </label>
+                                        <input type="hidden" name="i_table_id" value="<?= $_GET['table_id']?>" />
+                                        <select name="i_member_id" id="i_member_id"  class="selectpicker show-tick form-control" data-live-search="true" >
                                         <?php
-                                        $query_table = mysql_query("select a.*, b.building_name
-																	from tables a
-																	left join buildings b on b.building_id = a.building_id
-                                  
-																	order by table_id
+                                        $query_member = mysql_query("select * from members 
+																	order by member_name
 																	");
-                                        while($row_table = mysql_fetch_array($query_table)){
+                                        while($row_member = mysql_fetch_array($query_member)){
                                         ?>
-                                        <option value="<?= $row_table['table_id']?>" <?php if($row_table['table_id'] == $table_id){ ?> selected="selected"<?php }?>><?php
-										if($row_table['table_id'] != 0){
-											$building = " (".$row_table['building_name'].")";
-										}else{
-											$building= "";
-										}
-										echo $row_table['table_name'].$building; ?></option>
+                                        <option value="<?= $row_member['member_id']?>" <?php if($row_member['member_id'] == $member_id){ ?> selected="selected"<?php }?>><?php
+										echo $row_member['member_name']." (".$row_member['member_phone'].")"; ?></option>
                                         <?php
                                         }
                                         ?>
                                         </select>
+                                        
                                       	</div>
             </div>
            

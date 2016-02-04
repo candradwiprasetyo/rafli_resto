@@ -25,8 +25,12 @@ switch ($page) {
 		
 		if($table_id == ""){
 			$check_table = 0;
+			$tot_id = "";
+			$member_id = "";
 		}else{
 			$check_table = check_table($table_id);
+			$member_id = get_member_id($table_id);
+			$tot_id = get_tot_id($table_id);
 		}
 
 		if(isset($_GET['mt_id'])){
@@ -73,6 +77,7 @@ switch ($page) {
 		$i_jam = date("H:i:s");
 		$i_table_id = get_isset($i_table_id);
 		$i_tot_id = get_isset($i_tot_id);
+		$i_member_id = get_isset($i_member_id);
 		$tanggal = $i_date." ".$i_jam;
 		
 		$i_total_harga = get_isset($i_total_harga);
@@ -87,7 +92,7 @@ switch ($page) {
 			}else{
 				$data = "'',
 					'$i_table_id',
-					'0',
+					'$i_member_id',
 					'$tanggal',
 					'$i_tot_id',
 					'".$_SESSION['user_id']."',

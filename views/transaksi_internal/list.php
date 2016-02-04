@@ -56,7 +56,7 @@
                                         <thead>
                                             <tr>
                                             	<th width="5%">No</th>
-                                            	<th>Code</th>
+                                            	<th>Kode</th>
                                                 <th>Tanggal</th>
                                                 <th>Pabrik</th>
                                                 <th>Cabang</th>
@@ -71,7 +71,7 @@
                                             <tr>
                                             <td><?= $no?></td>
                                                <td><?= $row['transaction_internal_code']?></td>
-                                                <td><?= $row['transaction_internal_date']?></td>
+                                                <td><?= format_date($row['transaction_internal_date']) ?></td>
                                                 <td><?= $row['pabrik']?></td>
                                                 <td><?= $row['cabang']?></td>
                                               <td style="text-align:center;">

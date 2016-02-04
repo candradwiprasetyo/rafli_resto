@@ -1,4 +1,4 @@
- <aside class="left-side sidebar-offcanvas <?php /*if($_SESSION['menu_active'] == 3){ ?>collapse-left <?php }*/ ?>">                
+<aside class="left-side sidebar-offcanvas <?php /*if($_SESSION['menu_active'] == 3){ ?>collapse-left <?php }*/ ?>">                
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -41,6 +41,8 @@
                                 <li><a href="menu.php?page=list"><i class="fa fa-glass"></i>Menu</a></li>
                                 <li><a href="member.php?page=list"><i class="fa fa-user"></i>Customer</a></li>
                                 <li><a href="supplier.php?page=list"><i class="fa fa-shopping-cart"></i>Supplier</a></li>
+                                <li><a href="bank.php?page=list"><i class="fa fa-list-alt"></i>Bank</a></li>
+                                <li><a href="type_jurnal.php?page=list"><i class="fa fa-list-alt"></i>Tipe Jurnal</a></li>
                                 <!--<li><a href="voucher.php?page=list"><i class="fa  fa-credit-card"></i>Voucher</a></li>
                                 <li><a href="partner.php?page=list"><i class="fa fa-smile-o"></i>Partner</a></li>
                                 <li><a href="building.php?page=list"><i class="fa fa-home"></i>Room</a></li> 
@@ -70,6 +72,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="transaksi_produksi.php"><i class="fa fa-list-alt"></i>Transaksi Produksi</a></li> 
                                 <li><a href="transaksi_internal.php"><i class="fa fa-list-alt"></i>Transaksi Internal</a></li>
+                                <li><a href="purchase.php"><i class="fa fa-list-alt"></i>Transaksi Pembelian</a></li>
                                 
                             </ul>
                   </li>
@@ -97,6 +100,7 @@
                             </a>
                             
                   </li>
+                  <!--
 
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
                             <a href="purchase.php">
@@ -105,6 +109,7 @@
                             </a>
                             
                   </li>
+                -->
                   
                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 8){ echo "class='active'"; } ?>>
                             <a href="stock.php">

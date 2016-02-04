@@ -5,6 +5,13 @@ function confirm_delete(id,control){
 	}
 }
 
+function confirm_payment(id,control){
+	var a = confirm("Anda yakin ingin membayar pembelian ini ?");
+	if(a==true){
+		window.location.href = control+id;
+	}
+}
+
 function confirm_onprogress(id,control){
 	var a = confirm("Anda yakin ingin memproses data ini?");
 	if(a==true){

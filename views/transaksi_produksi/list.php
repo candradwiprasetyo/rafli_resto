@@ -56,9 +56,9 @@
                                         <thead>
                                             <tr>
                                             	<th width="5%">No</th>
-                                            	<th>Code</th>
+                                            	<th>Kode</th>
                                                 <th>Tanggal</th>
-                                                <th>Item</th>
+                                                <th>Nama Item</th>
                                                 <th>Target</th>
                                                 <th>Hasil</th>
                                                 <th>Config</th>
@@ -72,8 +72,8 @@
                                             <tr>
                                             <td><?= $no?></td>
                                                <td><?= $row['transaction_production_code']?></td>
-                                                <td><?= $row['transaction_production_date']?></td>
-                                                <td><?= $row['item_name']?></td>
+                                                <td><?= format_date($row['transaction_production_date']) ?></td>
+                                                <td><?= $row['item_name']." (".$row['unit_name'].")"; ?></td>
                                                 <td><?= $row['transaction_production_target']?></td>
                                                 <td><?= $row['transaction_production_hasil']?></td>
                                               <td style="text-align:center;">
@@ -92,7 +92,7 @@
                                         </tbody>
                                           <tfoot>
                                             <tr>
-                                                <td colspan="7"><a href="<?= $add_button ?>" class="btn btn-danger " >Add</a></td>
+                                                <td colspan="7"><a href="<?= $add_button ?>" class="btn btn-success" >Tambah produksi</a></td>
                                                
                                             </tr>
                                         </tfoot>

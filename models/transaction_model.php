@@ -196,5 +196,27 @@ function get_building_id($table_id){
 	return $result;
 }
 
+function get_member_id($table_id){
+	$query = mysql_query("select member_id as result
+							  from transactions_tmp
+							  where table_id = '".$table_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$result = $row['result'];
+	return $result;
+}
+
+function get_tot_id($table_id){
+	$query = mysql_query("select tot_id as result
+							  from transactions_tmp
+							  where table_id = '".$table_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$result = $row['result'];
+	return $result;
+}
+
 
 ?>
