@@ -1,9 +1,12 @@
 <?php
 
-function select_detail($date1, $date2, $branch_id){
+function select_detail($date1, $date2, $branch_id,$journal_type_id){
 	$where = '';
 	if($branch_id){
 		$where = " and a.branch_id = '$branch_id'";
+	}
+	if($journal_type_id){
+		$where = " and a.journal_type_id = '$journal_type_id'";
 	}
 	$query = mysql_query("select a.*, b.journal_type_name, c.branch_name
 							from journals a 
@@ -19,6 +22,11 @@ function select_detail($date1, $date2, $branch_id){
 
 function select_branch($where){
 	$query = mysql_query("select a.* from branches a $where order by branch_id");
+	return $query;
+}
+
+function select_type_jurnal(){
+	$query = mysql_query("select a.* from journal_types a order by journal_type_id");
 	return $query;
 }
 

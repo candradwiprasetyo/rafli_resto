@@ -20,18 +20,21 @@ switch ($page) {
 		}
 		
 		$query_branch = select_branch($where_branch2);
+		$query_type_jurnal = select_type_jurnal();
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		
 		$date_default = "";
 		$date_url = "";
 		$branch_id = "";
+		$journal_type_id = "";
 
 		$button_download = "";
 		
 		if(isset($_GET['preview'])){
 			$i_date = get_isset($_GET['date']);
 			$branch_id = get_isset($_GET['branch_id']);
+			$journal_type_id = get_isset($_GET['journal_type_id']);
 			$date_default = $i_date;
 			$date_url = "&date=".str_replace(" ","", $i_date);
 			
@@ -55,7 +58,7 @@ switch ($page) {
 			$date1 = format_back_date($date[0]);
 			$date2 = format_back_date($date[1]);
 
-			$query_item = select_detail($date1, $date2, $branch_id);
+			$query_item = select_detail($date1, $date2, $branch_id,$journal_type_id);
 
 			include '../views/arus_kas/list_item.php';
 		
@@ -78,11 +81,12 @@ switch ($page) {
 			extract($_POST);
 			$i_date = (isset($_POST['i_date'])) ? $_POST['i_date'] : null;
 			$i_branch_id = (isset($_POST['i_branch_id'])) ? $_POST['i_branch_id'] : null;
+			$i_journal_type_id = (isset($_POST['i_journal_type_id'])) ? $_POST['i_journal_type_id'] : null;
 			$date_default = $i_date;
 			$date_url = "&date=".str_replace(" ","", $i_date);
 		//}
 		
-		header("Location: arus_kas.php?page=list&preview=1&date=$date_default&branch_id=$i_branch_id");
+		header("Location: arus_kas.php?page=list&preview=1&date=$date_default&branch_id=$i_branch_id&journal_type_id=$i_journal_type_id");
 	break;
 	
 

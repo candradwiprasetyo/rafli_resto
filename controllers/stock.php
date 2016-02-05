@@ -15,7 +15,7 @@ switch ($page) {
 		if($_SESSION['user_type_id']==1 || $_SESSION['user_type_id']==2){
 			$where_branch = "";
 		}else{
-			$where_branch = " where branch_id = '".$_SESSION['branch_id']."' ";
+			$where_branch = " where branch_id = '".$_SESSION['branch_id']."' or branch_type_id = '1'";
 		}
 		
 		$query = select();

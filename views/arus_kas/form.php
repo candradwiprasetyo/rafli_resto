@@ -81,7 +81,20 @@
 										 }
 										   ?>                                          
                                         </div>
-                                        
+                                        <div class="form-group">
+                                        <label>Type Jurnal</label>
+                                            <select id="basic" name="i_journal_type_id" size="1" class="selectpicker show-tick form-control" data-live-search="true" />
+                                            <option value="0">Semua</option>
+                                           <?php
+                                           while($r_jurnal = mysql_fetch_array($query_type_jurnal)){
+										   ?>
+                                           
+                                             <option value="<?= $r_jurnal['journal_type_id'] ?>" <?php if($journal_type_id == $r_jurnal['journal_type_id']){ ?> selected="selected"<?php } ?>><?= $r_jurnal['journal_type_name']?></option>
+                                             <?php
+										   }
+											 ?>
+                                           </select>
+                                           </div>
 
                                           </div>
                                    
