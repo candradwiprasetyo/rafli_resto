@@ -84,18 +84,32 @@ switch ($page) {
 					'$i_type_id'
 			";
 			
-			//echo $data;
+		//echo $data;
 
 		$branch_id = create($data);
 		
+		// buat ruangan otomatis
 		$data_building = "'',
 					'$i_name',
 					'',
 					'$branch_id'
 					
 			";
-		
-		create_building($data_building);
+		$building_id = create_building($data_building);
+
+		// buat meja untuk take away / delivery
+		$data_table = "'',
+					'$building_id', 
+					'-',
+					'965', 
+					'520',
+					'0',
+					'1',
+					'0',
+					'2'
+			";
+		create_table($data_table);
+
 		
 		if($i_img){
 			move_uploaded_file($i_img_tmp, $path.$image);
@@ -125,7 +139,7 @@ switch ($page) {
 		
 		$date = time();
 
-		echo $i_phone;
+		//echo $i_phone;
 		
 				if($i_img){
 
@@ -167,8 +181,39 @@ switch ($page) {
 		$data_building = "building_name = '$i_name'";
 		
 		update_building($data_building, $id);
+
+		// edit list menu
+		$query_menu = mysql_query("select a.*, b.menu_type_name
+                                                from menus a    
+                                                join menu_types b on b.menu_type_id = a.menu_type_id
+                                                order by menu_id");
+                while($row_menu = mysql_fetch_array($query_menu)){
+                	
+                	$i_check = (isset($_POST['i_check_'.$row_menu['menu_id']])) ? $_POST['i_check_'.$row_menu['menu_id']] : "";
+                	
+                	
+                	if($i_check){
+	                	$check_exist = check_exist($id, $row_menu['menu_id']);
+
+	                	if($check_exist == 0){
+
+	                		$data = "'',
+									'$id',
+									'".$row_menu['menu_id']."'
+							";
+
+	                		create_item($data);
+	                	}
+
+					}else{
+						//echo "gagal"."<br>";
+						delete_item($id, $row_menu['menu_id']);
+					}
+					
+
+				}
 			
-			header('Location: branch.php?page=list&did=2');
+		header('Location: branch.php?page=list&did=2');
 		
 		
 
@@ -194,5 +239,7 @@ switch ($page) {
 
 	break;
 }
+
+
 
 ?>

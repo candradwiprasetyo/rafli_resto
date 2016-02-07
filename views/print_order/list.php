@@ -61,7 +61,7 @@ table{
 <!--<body>-->
 
 <div class="header">
-<span style="font-size:18px;">Hikaru Resto<br>
+<span style="font-size:18px;">Mochi Maco<br>
 
 
 </div>

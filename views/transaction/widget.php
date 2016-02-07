@@ -48,7 +48,7 @@
                                                 <td><?= $row_widget['menu_name']?></td>
                                                   <td style="text-align:center;">
 
-                                                    <a href="transaction.php?page=note&table_id=<?= $table_id?>&wt_id=<?= $row_widget['wt_id']?>" class="btn btn-default" ><i class="fa fa-book"></i></a>
+                                                   <!-- <a href="transaction.php?page=note&table_id=<?= $table_id?>&wt_id=<?= $row_widget['wt_id']?>" class="btn btn-default" ><i class="fa fa-book"></i></a>-->
                                                     <a href="javascript:void(0)" onclick="confirm_delete(<?= $row_widget['wt_id']; ?>, 'transaction.php?page=delete_widget&table_id=<?= $table_id ?>&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>
 
                                                 </td> 

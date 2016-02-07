@@ -58,7 +58,8 @@ switch ($page) {
 				'200',
 				'2',
 				'1',
-				'0'
+				'0',
+				'1'
 				";
 		save_table($data);
 		header("location: table.php?building_id=$building_id");

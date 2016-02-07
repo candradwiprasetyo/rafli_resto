@@ -194,11 +194,31 @@ if(!$_SESSION['login']){
 		$get_item_not_ordered = get_item_not_ordered($row['table_id']);
 		
 	?>
-	<span class="tooltip tooltip-effect-1">
-	<div id="makeMeDraggable_<?= $row['table_id']?>" class="meja1">
+	
+	<?php
+	if($row['table_status_id'] != 1){
+	?>
+		<span class="tooltip tooltip-effect-1">
+	<?php
+	}else{
+	?>
+	<span onclick="add_order('<?= $row['table_id'] ?>')">
+	<?php
+	}
+	?>
+	<div id="makeMeDraggable_<?= $row['table_id']?>" class="meja1" >
 	
 				
-				<div class="tooltip-item"><?= $row['table_name'] ?>
+				<div class="tooltip-item">
+					<?php
+					if($row['table_type']==2){
+						?>
+						<div class="tanpa_meja">Take Away / Delivery</div>
+					<?php
+					}else{
+						echo $row['table_name']; 
+					}
+					?>
 				<?php
                 if($row['table_status_id'] == 2){
 				?>
@@ -243,6 +263,7 @@ if(!$_SESSION['login']){
 				</span>
 			
 	 </div>
+	
 	 </span> 
 	<?php
 	
@@ -497,6 +518,11 @@ if(!$_SESSION['login']){
 				
 			});
 		})(jQuery);
+
+		function add_order(data){
+			
+			window.location.href = 'transaction.php?table_id='+data;
+		}
 		
 		
 	</script>

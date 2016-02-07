@@ -4,7 +4,7 @@ include '../lib/function.php';
 include '../models/transaksi_produksi_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucfirst("Transaksi Internal");
+$title = ucfirst("Transaksi Produksi");
 
 $_SESSION['menu_active'] = 3;
 

@@ -3,7 +3,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
-                        <div class="pull-left image">
+                        <div class="image" style="margin-bottom:20px;">
                             <?php
                              $user_data = get_user_data();
               if($user_data[2]==""){
@@ -14,13 +14,14 @@
               ?>
                             <img src="<?= $img ?>" class="img-circle" alt="User Image" />
                         </div>
-                        <div class="pull-left info">
+                        <div>
                             <p><?php
                                        
                                         echo "Welcome, ".$user_data[0];
                                         ?></p>
+                                        
 
-                            <a href="#"><?= $user_data[1]?></a>
+                            <a><?= $user_data[1]?> cabang <?= $user_data[3]?></a>
                         </div>
 
                        

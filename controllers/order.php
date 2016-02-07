@@ -138,7 +138,9 @@ switch ($page) {
 					'".$i_bank_id."',
 					'".$row['user_id']."',
 					'".$i_bank_account."',
-					'".$row['transaction_code']."'
+					'".$row['transaction_code']."',
+					'".$row['customer_number']."',
+					'".$row['tot_id']."'
 					
 			";
 			// simpan transaksi

@@ -162,7 +162,10 @@ function format_date_xl($date_xl){
 }
 
 function get_user_data(){
-	$query_user = mysql_query("select * from users where user_id = '".$_SESSION['user_id']."'");
+	$query_user = mysql_query("select a.*, b.branch_name
+								from users a
+								join branches b on b.branch_id = a.branch_id
+								where a.user_id = '".$_SESSION['user_id']."'");
 	$row_user = mysql_fetch_object($query_user);
 
 	$name = ucfirst($row_user->user_name);
@@ -170,12 +173,14 @@ function get_user_data(){
 	switch($row_user->user_type_id){
 		case 1: $type = "Admin"; break;
 		case 2: $type = "Owner "; break;
-		case 3: $type = "Cashier"; break;
+		case 3: $type = "Manager"; break;
+		case 4: $type = "Cashier"; break;
+		case 5: $type = "Waiter"; break;
 	}
 	
 	$user_img = $row_user->user_img;
 
-	return array($name, $type, $user_img);
+	return array($name, $type, $user_img, $row_user->branch_name);
 }
 
 function create_report($title) {
