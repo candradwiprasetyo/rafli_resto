@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
         
                  <?php
-                if(isset($_GET['did']) && $_GET['did'] == 1){
+                if(isset($_GET['err']) && $_GET['err'] == 1){
                 ?>
                 <section class="content_new">
                    
@@ -10,6 +10,19 @@
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 <b>Simpan gagal !</b>
                Password dan confirm password tidak sama
+                </div>
+           
+                </section>
+                <?php
+                }elseif(isset($_GET['err']) && $_GET['err'] == 2){
+                ?>
+                <section class="content_new">
+                   
+                <div class="alert alert-warning alert-dismissable">
+                <i class="fa fa-warning"></i>
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <b>Simpan gagal !</b>
+               User login sudah ada, silahkan masukkan user login yang lain
                 </div>
            
                 </section>

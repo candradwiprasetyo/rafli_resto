@@ -5,6 +5,7 @@ function select(){
 							from tables a
 							join buildings b on b.building_id = a.building_id
 							join branches c on c.branch_id = b.branch_id
+							where a.table_type = '1'
 							order by table_id");
 	return $query;
 }

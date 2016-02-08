@@ -602,6 +602,7 @@ body > .header .logo .icon {
   background: #f6f6f6;
   padding-top: 20px;
   padding-bottom: 20px;
+  text-align:center;
 }
 .user-panel:before,
 .user-panel:after {
@@ -612,8 +613,8 @@ body > .header .logo .icon {
   clear: both;
 }
 .user-panel > .image > img {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   margin-right: 10px;
   border: 2px solid #ccc;
 }
@@ -1104,9 +1105,9 @@ body > .header .logo .icon {
 .btn-group-vertical .btn.btn-flat:last-of-type {
   border-radius: 0;
 }
-/* Checkbox and radio inputs */
+/* Checkbox and  inputs */
 .checkbox,
-.radio {
+. {
   padding-left: 0;
 }
 /* 
@@ -2736,16 +2737,16 @@ Component: timeline
 /*!
  * iCheck v1.0.1, http://git.io/arlzeA
  * =================================
- * Powerful jQuery and Zepto plugin for checkboxes and radio buttons customization
+ * Powerful jQuery and Zepto plugin for checkboxes and  buttons customization
  *
  * (c) 2013 Damir Sultanov, http://fronteed.com
  * MIT Licensed
  */
 /* iCheck plugin Minimal skin, black
 ----------------------------------- */
-/*
+
 .icheckbox_minimal,
-.iradio_minimal {
+.i_minimal {
   display: inline-block;
   *display: inline;
   vertical-align: middle;
@@ -2773,26 +2774,26 @@ Component: timeline
 .icheckbox_minimal.checked.disabled {
   background-position: -80px 0;
 }
-.iradio_minimal {
+.i_minimal {
   background-position: -100px 0;
 }
-.iradio_minimal.hover {
+.i_minimal.hover {
   background-position: -120px 0;
 }
-.iradio_minimal.checked {
+.i_minimal.checked {
   background-position: -140px 0;
 }
-.iradio_minimal.disabled {
+.i_minimal.disabled {
   background-position: -160px 0;
   cursor: default;
 }
-.iradio_minimal.checked.disabled {
+.i_minimal.checked.disabled {
   background-position: -180px 0;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
   .icheckbox_minimal,
-  .iradio_minimal {
+  .i_minimal {
     background-image: url('iCheck/minimal/minimal@2x.png');
     -webkit-background-size: 200px 20px;
     background-size: 200px 20px;

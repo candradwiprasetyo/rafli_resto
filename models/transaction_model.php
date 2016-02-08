@@ -5,7 +5,11 @@ function select($param){
 	/*if($param){
 		$where = "where menu_type_id = ".$param; 
 	}*/
-	$query = mysql_query("select * from menus $where order by menu_id");
+	$query = mysql_query("select b.* 
+											from branch_menus a  
+											join menus b on b.menu_id = a.menu_id
+											where a.branch_id = '$param'
+											order by b.menu_id");
 	return $query;
 }
 
@@ -210,6 +214,18 @@ function get_member_id($table_id){
 function get_tot_id($table_id){
 	$query = mysql_query("select tot_id as result
 							  from transactions_tmp
+							  where table_id = '".$table_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$result = $row['result'];
+	return $result;
+}
+
+
+function get_table_type($table_id){
+	$query = mysql_query("select table_type as result
+							  from tables
 							  where table_id = '".$table_id."'
 							  ");
 	$row = mysql_fetch_array($query);

@@ -1,10 +1,11 @@
 <?php
 
 function select($transaction){
-	$query = mysql_query("select a.*, b.table_name, c.member_name
+	$query = mysql_query("select a.*, b.table_name, c.member_name, user_name
 							  from transactions a
 							  left join members c on c.member_id = a.member_id
-							  join tables b on b.table_id = a.table_id
+							  left join tables b on b.table_id = a.table_id
+							  left join users d on d.user_id = a.user_id
 							  where transaction_id = '".$transaction."'");
 	return $query;
 }

@@ -271,7 +271,7 @@ function handleDragStop_<?= $r4['table_id']?>( event, ui) {
 	}
 ?>
 
-<!--
+
 <div class="footer_fixed"> 
 
 			<div class="morph-button morph-button-sidebar morph-button-fixed">
@@ -299,7 +299,7 @@ function handleDragStop_<?= $r4['table_id']?>( event, ui) {
 		</div>
         
        </div>
-   -->
+   
 
 	<script src="../js/progress_button/classie.js"></script>
 		<script src="../js/button_component/uiMorphingButton_fixed.js"></script>

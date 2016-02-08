@@ -31,6 +31,14 @@ function create($data){
 
 function create_building($data){
 	mysql_query("insert into buildings values(".$data.")");
+	$id = mysql_insert_id();
+	return $id;
+}
+
+function create_table($data){
+	mysql_query("insert into tables values(".$data.")");
+	$id = mysql_insert_id();
+	return $id;
 }
 
 function update($data, $id){
@@ -52,6 +60,25 @@ function get_img_old($id){
 			where branch_id = '$id'");
 	$result = mysql_fetch_array($query);
 	return $result['branch_img'];
+}
+
+function check_exist($branch_id, $menu_id){
+	$query = mysql_query("select count(branch_menu_id) as jumlah
+							  from branch_menus
+							  where branch_id = '".$branch_id."' and menu_id = '".$menu_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$jumlah = $row['jumlah'];
+	return $jumlah;
+}
+
+function create_item($data){
+	mysql_query("insert into branch_menus values(".$data.")");
+}	
+
+function delete_item($branch_id, $menu_id){
+	mysql_query("delete from branch_menus where branch_id = '$branch_id' and menu_id = '$menu_id'");
 }
 
 

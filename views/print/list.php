@@ -1,4 +1,11 @@
 <?php
+function format_date_print($data){
+  $d = explode(" ",$data);
+  $d2 = explode("-", $d[0]);
+
+  $tgl = $d2[2]."/".$d2[1]."/".$d2[0];
+  return $tgl;
+}
 /*
 $outprint = "Just the test printer";
 $printer = printer_open("58 Printer(1)");
@@ -61,19 +68,28 @@ table{
 <!--<body>-->
 
 <div class="header">
-<span style="font-size:18px;">Hikaru<br>
-Resto </span><br>
-Jl. Taman Gayungsari Timur No.7 Surabaya<br />
-(031) 8381 9381
+<span style="font-size:18px;">Mochi Maco<br> </span><br>
+The Gayungsari<br />
+
 
 </div>
 <br />
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><?= $row['table_name']?></td>
-   
-    <td align="right" ><?= $row['transaction_date'] ?></td>
+    <td>Tanggal</td>
+    <td>:</td>
+    <td align="right" ><?= format_date_print($row['transaction_date']) ?></td>
+  </tr>
+  <tr>
+    <td>No Meja</td>
+    <td>:</td>
+    <td align="right" ><?= $row['table_name']; ?></td>
+  </tr>
+  <tr>
+    <td>Nama Kasir</td>
+    <td>:</td>
+    <td align="right" ><?= $row['user_name']; ?></td>
   </tr>
 </table>
 <br />

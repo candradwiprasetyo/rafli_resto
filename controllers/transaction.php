@@ -27,22 +27,29 @@ switch ($page) {
 			$check_table = 0;
 			$tot_id = "";
 			$member_id = "";
+
 		}else{
 			$check_table = check_table($table_id);
 			$member_id = get_member_id($table_id);
 			$tot_id = get_tot_id($table_id);
+
+			$table_type = get_table_type($table_id); 
 		}
+
+		$customer_number = 1;
 
 		if(isset($_GET['mt_id'])){
 			$param = $_GET['mt_id'];
 		}else{
 			$param = '';
 		}
+		
+		$branch_id = $_SESSION['branch_id'];
 
 		$query_cat = select_cat($param);
-		$query = select($param);
-		$query2 = select($param);
-		$query_find = select($param);
+		$query = select($branch_id);
+		$query2 = select($branch_id);
+		$query_find = select($branch_id);
 		$action = "transaction.php?page=save";
 		
 
@@ -79,6 +86,7 @@ switch ($page) {
 		$i_tot_id = get_isset($i_tot_id);
 		$i_member_id = get_isset($i_member_id);
 		$tanggal = $i_date." ".$i_jam;
+		$i_customer_number = get_isset($i_customer_number);
 		
 		$i_total_harga = get_isset($i_total_harga);
 		//echo $tanggal;
@@ -96,7 +104,8 @@ switch ($page) {
 					'$tanggal',
 					'$i_tot_id',
 					'".$_SESSION['user_id']."',
-					'".time()."'
+					'".time()."',
+					'$i_customer_number'
 						";
 			
 			create_config("transactions_tmp", $data);
@@ -150,12 +159,14 @@ switch ($page) {
 				
 				
 			}
-			if($i_tot_id == 1){
+			
+			/*if($i_tot_id == 1){
 				header("Location: order.php");
 			}else{
 				header("Location: payment.php?table_id=0");
-			}
-			//header("Location: transaction.php?page=list&table_id=$i_table_id");
+			}*/
+
+			header("Location: payment.php?page=list&table_id=$i_table_id");
 		}else{
 			header("Location: transaction.php?page=list&err=1&table_id=$i_table_id");
 		}

@@ -62,7 +62,8 @@ switch ($page) {
 					'100',
 					'$i_chair_number',
 					'1',
-					'0'
+					'0',
+					'1'
 			";
 			
 			//echo $data;

@@ -2,6 +2,7 @@
         
 
                 <!-- Main content -->
+                <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
                 <section class="content">
                     <div class="row">
                       
@@ -12,7 +13,7 @@
                           
                           <div class="title_page"> <?= $title ?></div>
 
-                             <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
+                             
 
                             <div class="box box-cokelat">
                                 
@@ -85,7 +86,15 @@
                              </div>
                             
                             </div><!-- /.box -->
-                       </form>
+                       
                         </div><!--/.col (right) -->
                     </div>   <!-- /.row -->
+
+                      <?php
+                    if($id){
+                       include 'list_menu.php';
+                    }
+                    ?>
+
                 </section><!-- /.content -->
+                 </form>

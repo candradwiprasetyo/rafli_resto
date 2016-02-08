@@ -23,8 +23,8 @@ if(!$_SESSION['login']){
         <link href="../css/popModal.css" type="text/css" rel="stylesheet" >
         <!-- Preview -->
         <link href="../css/preview.css" type="text/css" rel="stylesheet" >
-         <!-- iCheck for checkboxes and radio inputs 
-        <link href="../css/iCheck/all.css" rel="stylesheet" type="text/css" />-->
+         <!-- iCheck for checkboxes and radio inputs -->
+        <link href="../css/iCheck/all.css" rel="stylesheet" type="text/css" />
          <!-- daterange picker -->
         <link href="../css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <!-- Bootstrap time Picker -->
@@ -173,6 +173,9 @@ if(!$_SESSION['login']){
                                         <small><?php
                                         
                                         echo $user_data[1];
+                                        ?> cabang <?php
+                                        
+                                        echo $user_data[3];
                                         ?></small>
                                     </p>
                                 </li>

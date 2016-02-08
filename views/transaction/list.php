@@ -149,7 +149,7 @@ function load_data_history(id)
             
             
             
-            <div class="col-md-4">
+            <div class="col-md-3">
             <div class="form-group">
              <label>Date </label>
              <div class="input-group">
@@ -162,12 +162,17 @@ function load_data_history(id)
             </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
             <div class="form-group">
              <label>Order Type </label>
              <select name="i_tot_id" id="i_tot_id"  class="selectpicker show-tick form-control" data-live-search="true">
                      <?php
-                    $query_tot = mysql_query("select * from transaction_order_types 
+                     if($table_type == 1){
+                        $where = " where tot_id = 1 ";
+                     }else{
+                        $where = " where tot_id <> 1 ";
+                     }
+                    $query_tot = mysql_query("select * from transaction_order_types $where
                                   ");
                                         while($row_tot = mysql_fetch_array($query_tot)){
                                         ?>
@@ -180,7 +185,7 @@ function load_data_history(id)
             </div>
           </div>
             
-             <div class="col-md-4">
+             <div class="col-md-3">
              <div class="form-group">
                                         <label>Customer </label>
                                         <input type="hidden" name="i_table_id" value="<?= $_GET['table_id']?>" />
@@ -199,6 +204,17 @@ function load_data_history(id)
                                         </select>
                                         
                                       	</div>
+            </div>
+
+            <div class="col-md-3">
+            <div class="form-group">
+             <label>Jumlah Tamu </label>
+             <div class="input-group">
+            
+                                            
+                                            <input type="text" required class="form-control pull-right" name="i_customer_number" value="<?= @$customer_number ?>"/>
+                                        </div><!-- /.input group -->
+            </div>
             </div>
            
             
@@ -282,7 +298,12 @@ function load_data_history(id)
                   
                   <?php
                     $no2 = 1;
-          $query = mysql_query("select * from menus where menu_type_id = '".$row_cat['menu_type_id']."' order by menu_id");
+          			$query = mysql_query("select b.* 
+											from branch_menus a  
+											join menus b on b.menu_id = a.menu_id
+											where b.menu_type_id = '".$row_cat['menu_type_id']."' 
+											and a.branch_id = '$branch_id'
+											order by b.menu_id");
                     while($row = mysql_fetch_array($query)){
                    ?>
                    
