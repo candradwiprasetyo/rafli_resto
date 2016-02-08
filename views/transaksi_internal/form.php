@@ -64,7 +64,7 @@ function edit_price_<?= $row_item2['transaction_internal_detail_id']?>(data){
 				   //alert("Simpan berhasil");
 				});
 				
-				document.getElementById("i_total_<?= $row_item2['transaction_internal_detail_id']?>").value =  parseFloat(data) * parseFloat(qty);
+				document.getElementById("i_total_<?= $row_item2['transaction_internal_detail_id']?>").value =  parseFloat(data);
 				
 				total = get_total();
 				document.getElementById("i_total_transaction").value = CurrencyFormat(total);
@@ -99,7 +99,7 @@ function edit_qty_<?= $row_item4['transaction_internal_detail_id']?>(data){
 				   //alert("Simpan berhasil");
 				});
 				
-				document.getElementById("i_total_<?= $row_item4['transaction_internal_detail_id']?>").value =  parseFloat(data) * parseFloat(price);
+				document.getElementById("i_total_<?= $row_item4['transaction_internal_detail_id']?>").value =  parseFloat(price);
 				
 				total = get_total();
 				document.getElementById("i_total_transaction").value = CurrencyFormat(total);
@@ -276,9 +276,9 @@ function go_to_payment(){
                                             <tr>
                                             	<th width="5%">No</th>
                                                 <th width="30%">Nama Item</th>
-												<th width="15%">Harga</th>
                                                   <th width="10%">Qty</th>
-                                                  <th width="15%">Total Price</th>
+                                                  <th width="15%">Harga</th>
+                                                  <!--<th width="15%">Total Price</th>-->
                                                    <th width="10%">Config</th> 
                                             </tr>
                                         </thead>
@@ -293,16 +293,17 @@ function go_to_payment(){
                                             <tr>
                                             	<td><?= $no?></td>
                                                <td><?= $row_item['item_name']?></td>
-                                               <td><input <? if ($row->transaction_internal_id) {?> readonly="readonly" <? }?> name="i_price_<?php echo $row_item['transaction_internal_detail_id']?>" type="text" id="i_price_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_price']?>"  class="form-control" onchange="edit_price_<?php echo $row_item['transaction_internal_detail_id']?>(this.value)" />
                                                
-                                               <input name="i_grand_price_<?php echo $row_item['tnt_id']?>" type="hidden" id="i_grand_price_<?php echo $row_item['tnt_id']?>"  value="<?php echo $row_item['tnt_grand_price']?>"  class="form-control"/>
-                                               </td>
                                                <td>
                                              <input <? if ($row->transaction_internal_id) {?> readonly="readonly" <? }?> name="i_qty_<?php echo $row_item['transaction_internal_detail_id']?>" type="text" id="i_qty_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_qty']?>"  class="form-control" onchange="edit_qty_<?php echo $row_item['transaction_internal_detail_id']?>(this.value)" />
                                              
-                                               <input name="i_grand_price_<?php echo $row_item['tnt_id']?>" type="hidden" id="i_grand_price_<?php echo $row_item['tnt_id']?>"  value="<?php echo $row_item['tnt_grand_price']?>"  class="form-control"/>
+                                             
+                                             <input name="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" type="hidden" id="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_total']?>" class="form-control"  readonly="readonly"/>
                                              </td>
-                                               <td><input name="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" type="text" id="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_total']?>" class="form-control"  readonly="readonly"/></td>
+                                             <td><input <? if ($row->transaction_internal_id) {?> readonly="readonly" <? }?> name="i_price_<?php echo $row_item['transaction_internal_detail_id']?>" type="text" id="i_price_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_price']?>"  class="form-control" onchange="edit_price_<?php echo $row_item['transaction_internal_detail_id']?>(this.value)" />
+                                               
+                                               </td>
+                                               <!--<td><input name="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" type="text" id="i_total_<?php echo $row_item['transaction_internal_detail_id']?>" value="<?php echo $row_item['transaction_internal_detail_total']?>" class="form-control"  readonly="readonly"/></td>-->
                                                <td style="text-align:center;"><? if (!$row->transaction_internal_id) {?>
                                                     <a href="javascript:void(0)" onclick="confirm_delete(<?= $row_item['transaction_internal_detail_id']; ?>,'transaksi_internal.php?page=delete_item&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a><? }?>
 
@@ -337,10 +338,9 @@ function go_to_payment(){
                                         ?>
                                         </select>
                                          <? }?></td>
-                                          <td></td>
                                             <td align="right" valign="middle" style="font-size:22px;"><strong>TOTAL (Rp)</strong></td>
                                               
-                                           <td colspan="3" ><strong>
+                                           <td colspan="2" ><strong>
                                           <input name="i_total_transaction" type="text" id="i_total_transaction" value="<?php echo number_format($total, 0, ",", ".") ?>" class="form-control"  readonly="readonly" style="font-size:30px; height:50px; text-align:right;" />
                                             <input name="i_total_transaction_real" type="hidden" id="i_total_transaction_real" value="<?php echo $total ?>" class="form-control"  readonly="readonly" style="font-size:30px; height:50px; text-align:right;" />
                                           

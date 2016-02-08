@@ -4,7 +4,7 @@ include '../lib/function.php';
 include '../models/transaksi_produksi_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucfirst("Transaksi Internal");
+$title = ucfirst("Transaksi Produksi");
 
 $_SESSION['menu_active'] = 3;
 
@@ -46,7 +46,12 @@ switch ($page) {
 			
 			//inisialisasi
 			$row = new stdClass();
-			
+			$resep_id = (isset($_GET['resep_id'])) ? $_GET['resep_id'] : 0;
+			if($resep_id){
+				$row->resep_id = $resep_id;
+			}else{
+				$row->resep_id = false;
+			}
 			$row->transaction_production_id = false;
 			$row->transaction_production_code = false;
 			$row->transaction_production_date = date('d/m/Y');
@@ -83,6 +88,27 @@ switch ($page) {
 		header("Location: transaksi_produksi.php?page=form");
 		
 	break;
+	
+	case 'add_resep';
+		$resep_id = get_isset($_GET['resep_id']);	
+		
+		$query_resep = select_resep($resep_id);
+		
+		while($row = mysql_fetch_array($query_resep)){
+			$data = "'',
+						'0',
+						'".$row['item_id']."',
+						'".$row['resep_detail_qty']."', 
+						'".$_SESSION['user_id']."'
+						
+				";
+				
+				create_config("transaction_production_details", $data);
+		}
+			
+		header("Location: transaksi_produksi.php?page=form&resep_id=$resep_id");
+		
+	break;
 
 	case 'save':
 	
@@ -90,12 +116,16 @@ switch ($page) {
 		
 		//echo "test";
 		
+		$i_resep = get_isset($_GET['i_item']);
+		$i_item = get_resep($i_resep);
+		$item_id = $i_item['item_id'];
+		
 		$row_id = get_isset($_GET['row_id']);
 
 		$i_date = get_isset($_GET['i_date']);
 		$i_date = format_back_date($i_date);
 		$i_code = get_isset($_GET['i_code']);
-		$i_item = get_isset($_GET['i_item']);
+		
 		$i_cabang = get_isset($_GET['i_cabang']);
 		$i_hasil = get_isset($_GET['i_hasil']);
 		$i_target = get_isset($_GET['i_target']);
@@ -107,7 +137,7 @@ switch ($page) {
 					'$i_cabang',	
 					'$i_code',
 					'$i_date',
-					'$i_item',
+					'$i_resep',
 					'$i_target',
 					'$i_hasil'
 					
@@ -130,9 +160,9 @@ switch ($page) {
 		}else{
 			update_production($row_id,$i_hasil);
 			//plus stock
-			$select_stock2 = select_stock($i_cabang,$i_item);
+			$select_stock2 = select_stock($i_cabang,$item_id);
 			$stock_plus = $select_stock2['item_stock_qty'] + $i_hasil;
-			update_stock($i_cabang,$i_item,$stock_plus);
+			update_stock($i_cabang,$item_id,$stock_plus);
 		}
 		
 		header("Location: transaksi_produksi.php");
@@ -164,6 +194,21 @@ switch ($page) {
 		$qty = get_isset($_GET['qty']);
 		$price = get_isset($_GET['price']);		
 		$total = $qty * $price;
+		
+		$data = "transaction_production_detail_qty = '$qty'
+				
+		";
+		
+		update_config("transaction_production_details", $data, "transaction_production_detail_id", $id);
+
+	break;
+	
+	case 'edit_qty_now':
+	
+	echo "test";
+
+		$id = get_isset($_GET['id']);	
+		$qty = get_isset($_GET['qty']);
 		
 		$data = "transaction_production_detail_qty = '$qty'
 				

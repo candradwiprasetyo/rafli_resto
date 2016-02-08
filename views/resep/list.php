@@ -56,11 +56,8 @@
                                         <thead>
                                             <tr>
                                             	<th width="5%">No</th>
-                                            	<th>Kode</th>
-                                                <th>Tanggal</th>
-                                                <th>Nama Resep</th>
-                                                <th>Target</th>
-                                                <th>Hasil</th>
+                                            	<th>Nama</th>
+                                                <th>Item</th>
                                                 <th>Config</th>
                                             </tr>
                                         </thead>
@@ -71,15 +68,12 @@
                                             ?>
                                             <tr>
                                             <td><?= $no?></td>
-                                               <td><?= $row['transaction_production_code']?></td>
-                                                <td><?= format_date($row['transaction_production_date']) ?></td>
-                                                <td><?= $row['resep_name'] ?></td>
-                                                <td><?= $row['transaction_production_target']?></td>
-                                                <td><?= $row['transaction_production_hasil']?></td>
+                                               <td><?= $row['resep_name']?></td>
+                                                <td><?= $row['item_name']?></td>
                                               <td style="text-align:center;">
 
-                                                    <a href="transaksi_produksi.php?page=form&id=<?= $row['transaction_production_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
-                                                    <!--<a href="javascript:void(0)" onclick="confirm_delete(<?= $row['transaction_internal_id']; ?>,'transaksi_internal.php?page=delete&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>-->
+                                                    <a href="resep.php?page=form&id=<?= $row['resep_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
+                                                   <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['resep_id']; ?>,'resep.php?page=delete&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>
                                                 </td> 
                                             </tr>
                                             <?php
@@ -92,7 +86,7 @@
                                         </tbody>
                                           <tfoot>
                                             <tr>
-                                                <td colspan="7"><a href="<?= $add_button ?>" class="btn btn-success" >Tambah produksi</a></td>
+                                                <td colspan="6"><a href="<?= $add_button ?>" class="btn btn-danger " >Add</a></td>
                                                
                                             </tr>
                                         </tfoot>

@@ -47,6 +47,46 @@ function add_menu(id)
 
 }
 
+function load_resep(id)
+{
+	//alert(id);
+
+	if(id!=0){
+		
+		window.location.href = 'transaksi_produksi.php?page=add_resep&resep_id='+id;
+	}
+
+}
+
+function target_resep(id)
+{
+	//alert(id);
+	<?php
+	while($row_item2 = mysql_fetch_array($query_item2)){
+	?>
+	
+	var qty = "<?=  $row_item2['transaction_production_detail_qty']; ?>";
+	
+	
+	document.getElementById("i_qty_<?= $row_item2['transaction_production_detail_id']?>").value =  parseFloat(qty) * parseFloat(id);
+	
+	var qty_last = parseFloat(qty) * parseFloat(id);
+	
+				$.ajax({
+					type: "GET",
+					url: "transaksi_produksi.php?page=edit_qty_now",
+					data:{id:<?= $row_item2['transaction_production_detail_id']?>, qty:qty_last}
+				}).done(function( result ) {
+				  // alert("Simpan berhasil");
+				});
+	
+	<?php
+	
+	}
+	?>
+
+}
+
 
 <?php
 while($row_item4 = mysql_fetch_array($query_item4)){
@@ -94,7 +134,7 @@ function go_to_payment(){
 			var i_hasil = document.getElementById("i_hasil").value;
 			var row_id = document.getElementById("row_id").value;
 			
-			//alert(total);
+			//alert(i_hasil);
 			window.location.href = 'transaksi_produksi.php?page=save&i_code='+i_code+'&i_item='+i_item+'&i_cabang='+i_cabang+'&i_target='+i_target+'&i_hasil='+i_hasil+'&row_id='+row_id+'&i_date='+i_date;
 			
 		}else{
@@ -168,19 +208,20 @@ function go_to_payment(){
             
              <div class="col-xs-4">
              <div class="form-group">
-                                         <label>Nama Item </label>
-                                        <select name="i_item" id="i_item" <? if ($row->transaction_production_id) {?> disabled <? }?>  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data(this.value)" >
+                                         <label>Nama Resep </label>
+                                        <select name="i_item" id="i_item" <? if ($row->transaction_production_id) {?> disabled <? }?>  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_resep(this.value)" >
+                                        <option value="0">Pilih Resep</option>
                                          <?php
-                                        $query_item7 = mysql_query("select a.*, b.unit_name 
-                                                    from items a 
-                                                    join units b on b.unit_id = a.unit_id
-                                                    order by item_id
+                                        $query_item7 = mysql_query("select a.*,b.item_name
+                                                    from reseps a
+                                                    join items b on b.item_id = a.item_id
+                                                    order by resep_id
 																	");
                                         while($row_item7 = mysql_fetch_array($query_item7)){
                                         ?>
-                                        <option value="<?= $row_item7['item_id']?>"><?php
+                                        <option value="<?= $row_item7['resep_id']?>" <?php if($row_item7['resep_id'] == $row->resep_id){ ?> selected="selected" <?php }?>><?php
 										
-										echo $row_item7['item_name']." (".$row_item7['unit_name'].")"; ?></option>
+										echo $row_item7['item_name'] ?></option>
                                         <?php
                                         }
                                         ?>
@@ -190,12 +231,12 @@ function go_to_payment(){
             
             <div class="col-xs-4">
              <div class="form-group">
-                                         <label>Cabang  </label>
+                                         <label>Pabrik  </label>
                                         <select name="i_cabang" id="i_cabang" <? if ($row->transaction_production_id) {?> disabled <? }?>  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data(this.value)" >
                                         <?php
                                         $query_branch = mysql_query("select a.*
 																	from branches a	
-																	where branch_type_id = 2															
+																	where branch_type_id = 1															
 																	order by branch_id
 																	");
                                         while($row_branch = mysql_fetch_array($query_branch)){
@@ -213,7 +254,7 @@ function go_to_payment(){
             <div class="col-xs-4">
            <div class="form-group">
                                             <label>Target</label>
-                                            <input required type="text" <? if ($row->transaction_production_id) {?> readonly <? }?> id="i_target" name="i_target" class="form-control" placeholder="Masukkan target produksi" value="<?=$row->transaction_production_target ?>"/>
+                                            <input required type="text" <? if ($row->transaction_production_id) {?> readonly <? }?> id="i_target" name="i_target" class="form-control" placeholder="Masukkan target produksi" onChange="target_resep(this.value)" value="<?=$row->transaction_production_target ?>"/>
                                         </div>
             </div>
             
@@ -254,7 +295,7 @@ function go_to_payment(){
                                             	<td><?= $no?></td>
                                                <td><?= $row_item['item_name']?></td>
                                                <td>
-                                             <input <? if ($row->transaction_production_id) {?> readonly="readonly" <? }?> name="i_qty_<?php echo $row_item['transaction_production_detail_id']?>" type="text" id="i_qty_<?php echo $row_item['transaction_production_detail_id']?>" value="<?php echo $row_item['transaction_production_detail_qty']?>"  class="form-control" onchange="edit_qty_<?php echo $row_item['transaction_production_detail_id']?>(this.value)" />
+                                             <input readonly="readonly" name="i_qty_<?php echo $row_item['transaction_production_detail_id']?>" type="text" id="i_qty_<?php echo $row_item['transaction_production_detail_id']?>" value="<?php echo $row_item['transaction_production_detail_qty']?>"  class="form-control" onchange="edit_qty_<?php echo $row_item['transaction_production_detail_id']?>(this.value)" />
                                              
                                              </td>
                                                <td style="text-align:center;"><? if (!$row->transaction_production_id) {?>
@@ -272,7 +313,8 @@ function go_to_payment(){
                                           
                                         </tbody>
                                          <tfoot>
-                                          <tr>
+                                         <input type="hidden" id="i_total" value="<?=$no?>">
+                                          <!--<tr>
                                           <td></td>
                                           <td><? if (!$row->transaction_production_id) {?>
                                           <select name="i_menu_id" id="i_menu_id"  class="selectpicker show-tick form-control" data-live-search="true" onchange="add_menu(this.value)" >
@@ -297,7 +339,7 @@ function go_to_payment(){
                                             <td align="right" valign="middle" style="font-size:22px;"><strong</strong></td>
                                               
                                            
-                                           </tr>
+                                           </tr>-->
                                            
                                          </tfoot>
                                          

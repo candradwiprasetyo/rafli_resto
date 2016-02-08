@@ -1,10 +1,9 @@
 <?php
 
 function select($where){
-	$query = mysql_query("select a.*,b.branch_name,c.item_name, d.unit_name from transaction_productions a 
+	$query = mysql_query("select a.*,b.branch_name,c.resep_name from transaction_productions a 
 						  join branches b on b.branch_id = a.branch_id
-						  join items c on c.item_id = a.item_id
-						  join units d on d.unit_id = c.unit_id
+						  join reseps c on c.resep_id = a.resep_id
 						  $where
 						  order by transaction_production_id");
 	return $query;
@@ -29,6 +28,15 @@ function select_item($id){
 							  join transaction_productions b on b.transaction_production_id = a.transaction_production_id
 							  where a.transaction_production_id = $id
 							  order by a.transaction_production_detail_id 
+							  ");
+	return $query;
+}
+
+function select_resep($id){
+	 $query = mysql_query("select a.*
+							  from resep_details a
+							  where a.resep_id = $id
+							  order by a.resep_detail_id 
 							  ");
 	return $query;
 }
@@ -63,6 +71,12 @@ function update_detail($id, $user_id){
 
 function update_stock($branch_id, $item_id,$new_stock){
 	mysql_query("update item_stocks set item_stock_qty = $new_stock where item_id = $item_id and branch_id = $branch_id");
+}
+
+function get_resep($id){
+	$query = mysql_query("select * from reseps where resep_id = '$id'");
+	$row = mysql_fetch_array($query);
+	return $row;
 }
 
 function delete_item($id){
