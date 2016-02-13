@@ -142,15 +142,27 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                              <?php
-                                if($_SESSION['user_type_id'] == 1 || $_SESSION['user_type_id'] == 2){
-                              ?>
+                              
                                 <li><a href="report_detail.php"><i class="fa fa-book"></i>Laporan Detail</a></li>
-                                <?php
-
-                              }
-                              ?> 
+                              
                                 <li><a href="report_harian.php"><i class="fa fa-book"></i>Laporan Harian</a></li>
+                                
+                             
+                            </ul>
+                  </li>
+                  
+                  <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 10){ echo "active"; }?>">
+                            <a href="#">
+                                <i class="fa fa-list-alt"></i>
+                                <span>Laporan Customer</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                             
+                                <li><a href="report_customer_harian.php"><i class="fa fa-book"></i>Customer Harian</a></li>
+                                <li><a href="report_customer_average.php"><i class="fa fa-book"></i>Average</a></li>
+                                <li><a href="report_kepuasan_customer.php"><i class="fa fa-book"></i>Kepuasan Customer</a></li>
+                                <li><a href="report_ranking_customer.php"><i class="fa fa-book"></i>Ranking Customer</a></li>
                                 
                              
                             </ul>

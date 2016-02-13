@@ -87,13 +87,14 @@
 	content: "\e00c";
 }
 
-.icon-arrow-right:before {
+/*.icon-arrow-right:before {
 	content: "\e00d";
 }
 
 .icon-arrow-left:before {
 	content: "\e003";
 }
+*/
 
 .icon-truck:before {
 	content: "\e00e";
