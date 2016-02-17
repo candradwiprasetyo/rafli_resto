@@ -45,6 +45,10 @@ function update($data, $id){
 	mysql_query("update branches set ".$data." where branch_id = '$id'");
 }
 
+function update_item($price, $id){
+	mysql_query("update branch_menus set branch_menu_price = '$price' where branch_menu_id = '$id'");
+}
+
 function update_building($data, $id){
 	mysql_query("update buildings set ".$data." where branch_id = '$id'");
 }
@@ -73,12 +77,34 @@ function check_exist($branch_id, $menu_id){
 	return $jumlah;
 }
 
+function get_exist($branch_id, $menu_id){
+	$query = mysql_query("select branch_menu_id as result
+							  from branch_menus
+							  where branch_id = '".$branch_id."' and menu_id = '".$menu_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$jumlah = $row['result'];
+	return $jumlah;
+}
+
 function create_item($data){
 	mysql_query("insert into branch_menus values(".$data.")");
 }	
 
 function delete_item($branch_id, $menu_id){
 	mysql_query("delete from branch_menus where branch_id = '$branch_id' and menu_id = '$menu_id'");
+}
+
+function get_menu_price($branch_id, $menu_id){
+	$query = mysql_query("select branch_menu_price as result
+							  from branch_menus
+							  where branch_id = '".$branch_id."' and menu_id = '".$menu_id."'
+							  ");
+	$row = mysql_fetch_array($query);
+	
+	$jumlah = $row['result'];
+	return $jumlah;
 }
 
 

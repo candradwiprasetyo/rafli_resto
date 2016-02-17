@@ -13,7 +13,7 @@
                             <div class="box">
                              
                                 <div class="box-body2 table-responsive">
-                                    <table id="example_nopagination1" class="table table-bordered table-striped">
+                                    <table id="" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
@@ -33,13 +33,25 @@
                                                 join menu_types b on b.menu_type_id = a.menu_type_id
                                                 order by menu_id");
                                             while($row_menu = mysql_fetch_array($query_menu)){
-                                            ?>
+                                            
+											$check_exist = check_exist($row->branch_id, $row_menu['menu_id']);
+											$branch_menu_price = get_menu_price($row->branch_id, $row_menu['menu_id']);
+											
+											if($check_exist > 0 ){
+												$price = $branch_menu_price;
+											}else{
+												$price = $row_menu['menu_price'];
+											}
+											
+											?>
 
                                             <tr>
-                                            <td><?= $no?></td>
+                                            <td><?= $branch_menu_price ?></td>
                                                <td><?= $row_menu['menu_name']?></td>
                                                <td><?= $row_menu['menu_type_name']?></td>
-                                               <td style="text-align:right;"><?= number_format($row_menu['menu_price'],0)?></td>
+                                               <td style="text-align:right;">
+											   <input name="i_branch_menu_price_<?= $row_menu['menu_id'] ?>" type="text" value="<?= $price; ?>" class="form-control" style="text-align:right" />
+											   </td>
                                                <td style="text-align:center;">
                                                     <?php
                                                     $check_status = check_exist($id, $row_menu['menu_id']); 

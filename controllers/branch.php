@@ -199,11 +199,18 @@ switch ($page) {
 
 	                		$data = "'',
 									'$id',
-									'".$row_menu['menu_id']."'
+									'".$row_menu['menu_id']."',
+									'".$_POST['i_branch_menu_price_'.$row_menu['menu_id']]."'
 							";
 
 	                		create_item($data);
-	                	}
+	                	}else{
+							
+							$get_exist = get_exist($id, $row_menu['menu_id']);
+							
+							update_item($_POST['i_branch_menu_price_'.$row_menu['menu_id']], $get_exist);
+							
+						}
 
 					}else{
 						//echo "gagal"."<br>";

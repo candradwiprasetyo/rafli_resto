@@ -162,7 +162,7 @@
                                 <li><a href="report_customer_harian.php"><i class="fa fa-book"></i>Customer Harian</a></li>
                                 <li><a href="report_customer_average.php"><i class="fa fa-book"></i>Average</a></li>
                                 <li><a href="report_kepuasan_customer.php"><i class="fa fa-book"></i>Kepuasan Customer</a></li>
-                                <li><a href="report_ranking_customer.php"><i class="fa fa-book"></i>Ranking Customer</a></li>
+                                <li><a href="report_customer_year.php"><i class="fa fa-book"></i>Ranking Customer</a></li>
                                 
                              
                             </ul>
