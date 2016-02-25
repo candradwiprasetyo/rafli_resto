@@ -1,9 +1,9 @@
 <?php
 
 function select($where){
-	$query = mysql_query("select a.*,b.branch_name,c.resep_name from transaction_productions a 
+	$query = mysql_query("select a.*,b.branch_name,c.item_name from transaction_productions a 
 						  join branches b on b.branch_id = a.branch_id
-						  join reseps c on c.resep_id = a.resep_id
+						  join items c on c.item_id = a.item_id
 						  $where
 						  order by transaction_production_id");
 	return $query;

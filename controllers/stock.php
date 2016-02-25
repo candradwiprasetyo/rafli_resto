@@ -54,9 +54,30 @@ switch ($page) {
 			
 			$action = "stock.php?page=save";
 		}
+		
+		$query_resep = select_resep($id);
+		$query_resep2 = select_resep($id);
 
 		include '../views/stock/form.php';
+		//include '../views/stock/list_resep.php';
 		get_footer();
+	break;
+	
+	case 'add_menu';
+		$item_id = get_isset($_GET['item_id']);	
+		$i_id = get_isset($_GET['i_id']);	
+		
+		$data = "'',
+					'$i_id',
+					'$item_id',
+					'0', 
+					'".$_SESSION['user_id']."'
+					
+			";
+		create_config("resep_details", $data);
+			
+		header("Location: stock.php?page=form&id=$i_id");
+		
 	break;
 
 	case 'save':
@@ -116,6 +137,18 @@ switch ($page) {
 		delete($id);
 
 		header('Location: stock.php?page=list&did=3');
+
+	break;
+	
+	case 'delete_item':
+	
+		$id = get_isset($_GET['id']);
+		$i_id = get_isset($_GET['i_id']);
+			
+		
+		delete_item($id);
+
+		header("Location: stock.php?page=form&id=$i_id");
 
 	break;
 }

@@ -53,7 +53,7 @@ function load_resep(id)
 
 	if(id!=0){
 		
-		window.location.href = 'transaksi_produksi.php?page=add_resep&resep_id='+id;
+		window.location.href = 'transaksi_produksi.php?page=add_resep&item_id='+id;
 	}
 
 }
@@ -210,16 +210,13 @@ function go_to_payment(){
              <div class="form-group">
                                          <label>Nama Resep </label>
                                         <select name="i_item" id="i_item" <? if ($row->transaction_production_id) {?> disabled <? }?>  class="selectpicker show-tick form-control" data-live-search="true" onChange="load_resep(this.value)" >
-                                        <option value="0">Pilih Resep</option>
+                                        <option value="0">Pilih Item</option>
                                          <?php
-                                        $query_item7 = mysql_query("select a.*,b.item_name
-                                                    from reseps a
-                                                    join items b on b.item_id = a.item_id
-                                                    order by resep_id
+                                        $query_item7 = mysql_query("select a.* from items a order by item_id
 																	");
                                         while($row_item7 = mysql_fetch_array($query_item7)){
                                         ?>
-                                        <option value="<?= $row_item7['resep_id']?>" <?php if($row_item7['resep_id'] == $row->resep_id){ ?> selected="selected" <?php }?>><?php
+                                        <option value="<?= $row_item7['item_id']?>" <?php if($row_item7['item_id'] == $row->item_id){ ?> selected="selected" <?php }?>><?php
 										
 										echo $row_item7['item_name'] ?></option>
                                         <?php

@@ -58,7 +58,7 @@
                                             	<th width="5%">No</th>
                                             	<th>Kode</th>
                                                 <th>Tanggal</th>
-                                                <th>Nama Resep</th>
+                                                <th>Nama Item</th>
                                                 <th>Target</th>
                                                 <th>Hasil</th>
                                                 <th>Config</th>
@@ -73,7 +73,7 @@
                                             <td><?= $no?></td>
                                                <td><?= $row['transaction_production_code']?></td>
                                                 <td><?= format_date($row['transaction_production_date']) ?></td>
-                                                <td><?= $row['resep_name'] ?></td>
+                                                <td><?= $row['item_name'] ?></td>
                                                 <td><?= $row['transaction_production_target']?></td>
                                                 <td><?= $row['transaction_production_hasil']?></td>
                                               <td style="text-align:center;">

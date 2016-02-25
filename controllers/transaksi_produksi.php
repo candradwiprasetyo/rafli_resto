@@ -46,11 +46,11 @@ switch ($page) {
 			
 			//inisialisasi
 			$row = new stdClass();
-			$resep_id = (isset($_GET['resep_id'])) ? $_GET['resep_id'] : 0;
-			if($resep_id){
-				$row->resep_id = $resep_id;
+			$item_id = (isset($_GET['item_id'])) ? $_GET['item_id'] : 0;
+			if($item_id){
+				$row->item_id = $item_id;
 			}else{
-				$row->resep_id = false;
+				$row->item_id = false;
 			}
 			$row->transaction_production_id = false;
 			$row->transaction_production_code = false;
@@ -90,9 +90,9 @@ switch ($page) {
 	break;
 	
 	case 'add_resep';
-		$resep_id = get_isset($_GET['resep_id']);	
+		$item_id = get_isset($_GET['item_id']);	
 		
-		$query_resep = select_resep($resep_id);
+		$query_resep = select_resep($item_id);
 		
 		while($row = mysql_fetch_array($query_resep)){
 			$data = "'',
@@ -106,7 +106,7 @@ switch ($page) {
 				create_config("transaction_production_details", $data);
 		}
 			
-		header("Location: transaksi_produksi.php?page=form&resep_id=$resep_id");
+		header("Location: transaksi_produksi.php?page=form&item_id=$item_id");
 		
 	break;
 
@@ -116,9 +116,9 @@ switch ($page) {
 		
 		//echo "test";
 		
-		$i_resep = get_isset($_GET['i_item']);
-		$i_item = get_resep($i_resep);
-		$item_id = $i_item['item_id'];
+		$i_item = get_isset($_GET['i_item']);
+		//$i_item = get_resep($i_resep);
+		//$item_id = $i_item['item_id'];
 		
 		$row_id = get_isset($_GET['row_id']);
 
@@ -137,7 +137,7 @@ switch ($page) {
 					'$i_cabang',	
 					'$i_code',
 					'$i_date',
-					'$i_resep',
+					'$i_item',
 					'$i_target',
 					'$i_hasil'
 					
@@ -160,9 +160,9 @@ switch ($page) {
 		}else{
 			update_production($row_id,$i_hasil);
 			//plus stock
-			$select_stock2 = select_stock($i_cabang,$item_id);
+			$select_stock2 = select_stock($i_cabang,$i_item);
 			$stock_plus = $select_stock2['item_stock_qty'] + $i_hasil;
-			update_stock($i_cabang,$item_id,$stock_plus);
+			update_stock($i_cabang,$i_item,$stock_plus);
 		}
 		
 		header("Location: transaksi_produksi.php");

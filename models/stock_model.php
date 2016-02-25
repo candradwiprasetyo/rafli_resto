@@ -8,6 +8,15 @@ function select(){
 	return $query;
 }
 
+function select_resep($id){
+	 $query = mysql_query("select a.*,c.item_name
+							  from resep_details a
+							  join items c on c.item_id = a.item_id
+							  where a.resep_id = '$id' 
+							  order by a.resep_id 
+							  ");
+	return $query;
+}
 
 function select_unit(){
 	$query = mysql_query("select * from units order by unit_id");
@@ -33,6 +42,10 @@ function create($data){
 	mysql_query("insert into items values(".$data.")");
 }
 
+function create_config($table, $data){
+	mysql_query("insert into $table values(".$data.")");
+}
+
 function update($data, $id){
 	mysql_query("update items set ".$data." where item_id = '$id'");
 }
@@ -45,5 +58,8 @@ function get_stock($item_id, $branch_id){
 	return $result;
 }
 
+function delete_item($id){
+	mysql_query("delete from resep_details  where resep_detail_id = '$id'");
+}
 
 ?>

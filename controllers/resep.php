@@ -163,7 +163,7 @@ switch ($page) {
 		
 		delete_item($id);
 
-		header("Location: resep.php?page=form");
+		header("Location: stock.php?page=form");
 
 	break;
 

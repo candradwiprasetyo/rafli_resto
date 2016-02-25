@@ -58,7 +58,12 @@
                 $("#example8").dataTable();
                 $("#example9").dataTable();
                 $("#example10").dataTable();
-
+				
+				$('#example_scroll').dataTable({
+                    "scrollX": true
+				
+                });
+				
  				$('#example_simple').dataTable({
                     "bPaginate": false,
                     "bLengthChange": false,
