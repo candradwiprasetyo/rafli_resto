@@ -115,7 +115,7 @@ switch ($page) {
 			update_config("tables", "table_status_id = 2", "table_id", $i_table_id);
 			delete_reserved($i_table_id);
 			
-			$query = select();
+			$query = select($_SESSION['branch_id']);
 			while($row = mysql_fetch_array($query)){
 				$jumlah = ($_POST['i_jumlah_'.$row['menu_id']]) ? $_POST['i_jumlah_'.$row['menu_id']] : 0;
 				

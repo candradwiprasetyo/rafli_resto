@@ -150,7 +150,7 @@ switch ($page) {
 			$get_table_name = get_table_name($table_id);
 			
 			// simpan jurnal
-			create_journal($transaction_id, "", 1, $i_grand_total, "Meja ".$get_table_name, $i_bank_id, $branch_id);
+			create_journal($transaction_id, "", 1, $i_grand_total, "Meja ".$get_table_name, $i_bank_id, $_SESSION['branch_id']);
 			
 			$query_detail =  mysql_query("select * 
 								from transaction_tmp_details a
