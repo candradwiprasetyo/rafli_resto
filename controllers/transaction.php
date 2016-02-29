@@ -87,6 +87,8 @@ switch ($page) {
 		$i_member_id = get_isset($i_member_id);
 		$tanggal = $i_date." ".$i_jam;
 		$i_customer_number = get_isset($i_customer_number);
+
+		$building_id = get_building_id($i_table_id);
 		
 		$i_total_harga = get_isset($i_total_harga);
 		//echo $tanggal;
@@ -166,9 +168,9 @@ switch ($page) {
 				header("Location: payment.php?table_id=0");
 			}*/
 
-			header("Location: payment.php?page=list&table_id=$i_table_id");
+			header("Location: payment.php?page=list&table_id=$i_table_id&building_id=$building_id");
 		}else{
-			header("Location: transaction.php?page=list&err=1&table_id=$i_table_id");
+			header("Location: transaction.php?page=list&err=1&table_id=$i_table_id&building_id=$building_id");
 		}
 	
 	break;
