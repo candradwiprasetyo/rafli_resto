@@ -5,7 +5,7 @@ function select($param){
 	/*if($param){
 		$where = "where menu_type_id = ".$param; 
 	}*/
-	$query = mysql_query("select b.* 
+	$query = mysql_query("select a.branch_menu_price, b.* 
 											from branch_menus a  
 											join menus b on b.menu_id = a.menu_id
 											where a.branch_id = '$param'
@@ -40,6 +40,18 @@ function select_menu($keyword){
 	return $row['menu_id'];
 }
 
+function get_compliment_status($id){
+	$query = mysql_query("select wt_compliment_status from widget_tmp where wt_id = '$id'");
+	$row = mysql_fetch_array($query);
+	return $row['wt_compliment_status'];
+}
+
+function get_compliment_status_manual($menu_id, $table_id){
+	$query = mysql_query("select wt_compliment_status from widget_tmp where menu_id = '$menu_id' and table_id = '$table_id' and user_id = '".$_SESSION['user_id']."'");
+	$row = mysql_fetch_array($query);
+	return $row['wt_compliment_status'];
+}
+
 function create_config($table, $data){
 	mysql_query("insert into $table values(".$data.")");
 }
@@ -47,6 +59,13 @@ function create_config($table, $data){
 function update_config($table, $data, $column, $id){
 	mysql_query("update $table set $data where $column = $id");
 }
+
+function update_compliment($id, $status){
+	
+	
+	mysql_query("update widget_tmp set wt_compliment_status = '$status' where wt_id = '$id'");
+}
+
 
 function update_config2($table, $data, $param){
 	mysql_query("update $table set $data where $param");
@@ -174,14 +193,41 @@ function get_jumlah($menu_id, $table_id){
 	return $jumlah;
 }
 
-
 function get_all_jumlah($table_id){
-	$query = mysql_query("select sum(jumlah * b.menu_price) as total 
+	$query = mysql_query("select a.jumlah, c.branch_menu_price, a.wt_compliment_status
 							from widget_tmp a
-							join menus b on b.menu_id = a.menu_id
+							join branch_menus c on c.menu_id = a.menu_id
 							where 
+							
 							user_id = '".$_SESSION['user_id']."'
 							and table_id = '$table_id'
+							and c.branch_id = '".$_SESSION['branch_id']."'
+							  ");
+	$total = 0;
+	while($row = mysql_fetch_array($query)){
+		if($row['wt_compliment_status']==1){
+			$qty = $row['jumlah'] - 1;
+		}else{
+			$qty = $row['jumlah'];
+		}
+		$value = $qty * $row['branch_menu_price'];
+		$total = $total + $value;
+	}
+	
+	$jumlah = ($total) ? $total : 0;
+	return $jumlah;
+}
+
+
+function get_all_jumlah_backup($table_id){
+	$query = mysql_query("select sum(jumlah * c.branch_menu_price) as total 
+							from widget_tmp a
+							join branch_menus c on c.menu_id = a.menu_id
+							where 
+							
+							user_id = '".$_SESSION['user_id']."'
+							and table_id = '$table_id'
+							and c.branch_id = '".$_SESSION['branch_id']."'
 							  ");
 	$row = mysql_fetch_array($query);
 	
@@ -232,6 +278,26 @@ function get_table_type($table_id){
 	
 	$result = $row['result'];
 	return $result;
+}
+
+
+function cek_resep($menu_id, $branch_id){
+	$query = mysql_query("select * 
+							  from menu_recipes
+							  where menu_id = '".$menu_id."'
+							  ");
+	$stock = 0;
+	while($row = mysql_fetch_array($query)){
+		$query_stock = mysql_query("select * from item_stocks where item_id = '".$row['item_id']."' and branch_id = '$branch_id'");
+		$row_stock = mysql_fetch_array($query_stock);
+		
+		if($row_stock['item_stock_qty'] == 0 || $row_stock['item_stock_qty'] < $row['item_qty']){
+			$stock = $stock + 1;
+		}
+		
+	}
+	
+	return $stock;
 }
 
 

@@ -222,71 +222,17 @@ if(!$_SESSION['login']){
                                             ?>
                                            
                                             <?php
-                     
-                                              $total_price2 = $total_price2 + $row_item2['transaction_detail_total'];
+											if($row_item2['transaction_detail_compliment_status'] == 1){
+												$jumlah_comp = $row_item2['transaction_detail_qty'] - 1;
+											}else{
+												$jumlah_comp = $row_item2['transaction_detail_qty'];
+											}
+                     							$total_comp = $jumlah_comp * $row_item2['transaction_detail_grand_price'];
+                                              	$total_price2 = $total_price2 + $total_comp;
                                             }
                                             ?>
 
-                                    <div class="col-md-12" style="padding:0px;">
-                                      <div class="payment_group">
-                                        <div class="calc_title">
-                                        <b>Nominal</b>
-                                        </div>
-
-                                         <input required type="text" name="i_payment" id="i_payment" class="form-control calc_nominal" value="<?= ($total_price2) ?>" style="text-align:right; font-size:20px;" onChange="update_change()"/>
-                                        
-                                         <div class="row" style="margin-top:10px;">
-                                          
-                                          <div class="col-md-5" style="padding:0px;">
-
-                                                  <div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right">S</div></div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(160000)">160</div></div>
-                                                    </div>
-                                                  <div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(200000)">200</div></div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(250000)">250</div></div>
-                                                  </div>
-                                                  <div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(10000)">+10</div></div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(20000)">+20</div></div>
-                                                  </div>
-                                                  <div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(50000)">+50</div></div>
-                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right">Sisa</div></div>
-                                                  </div>
-                                            
-                                            </div>
-                                            <div class="col-md-7" style="padding:0px;">
-                                                  <div style="border-top-left-radius:5px; border-top-right-radius:5px;">
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-top-left-radius:5px;" onclick="add_non_numeric(1)">1</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button"  onclick="add_non_numeric(2)">2</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-top-right-radius:5px;"  onclick="add_non_numeric(3)">3</div></div>
-                                                  </div>
-                                                  <div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(4)">4</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(5)">5</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(6)">6</div></div>
-                                                  </div>
-                                                  <div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(7)">7</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(8)">8</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(9)">9</div></div>
-                                                  </div>
-
-                                                  <div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-bottom-left-radius:5px;" onclick="add_clear(0)">C</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric('0')">0</div></div>
-                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-bottom-right-radius:5px;">.</div></div>
-                                                  </div>
-                                                 
-
-                                            </div>
-
-                                         </div>
-
-                                      </div>
-                                    </div>
+                                    
 
                                     <div class="col-md-12" style="padding:0px;">
                                     <div class="payment_group">
@@ -300,7 +246,7 @@ if(!$_SESSION['login']){
                                          <tfoot>
                                             
                                             <tr>
-                                                <td colspan="2" width="50%">Grand Total </td>
+                                                <td colspan="2" width="50%">Total </td>
                                                 
                                                
                                             </tr>
@@ -310,17 +256,24 @@ if(!$_SESSION['login']){
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2">Penerimaan </td>
-                                                
-                                               
+                                                <td colspan="2">Diskon</td>
                                             </tr>
                                             <tr>
                                               <td colspan="3" style="text-align:right; " >
-                                                 <input required type="text" name="i_discount" id="i_discount" class="form-control" value="0" style="text-align:right; font-size:20px;" onChange="update_discount()"/>
+                                              <div class="row">
+                                                 <div class="col-md-6" style="padding:0px;">
+                                                 <input required type="text" name="i_discount_persen" id="i_discount_persen" class="form-control" value="0" style="text-align:right; font-size:20px;" onChange="update_discount()"/>
+                                                
+                                                 </div>
+                                                 <div class="col-md-6" style="padding-right:0px;">
+                                                 
+                                                 <input required type="text" name="i_discount" id="i_discount" class="form-control" value="0" style="text-align:right; font-size:20px;" onChange="update_discount()" readonly/>
+                                                </div>
+                                                </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2">Sisa </td>
+                                                <td colspan="2">Grand Total </td>
                                                
                                                
                                             </tr>
@@ -382,6 +335,68 @@ if(!$_SESSION['login']){
                                       </table>
 
                                     </div>
+                                    
+                                    
+                                    <div class="col-md-12" style="padding:0px;">
+                                      <div class="payment_group">
+                                        <div class="calc_title">
+                                        <b>Nominal</b>
+                                        </div>
+
+                                         <input required type="text" name="i_payment" id="i_payment" class="form-control calc_nominal" value="<?= ($total_price2) ?>" style="text-align:right; font-size:20px;" onChange="update_change()"/>
+                                        
+                                         <div class="row" style="margin-top:10px;">
+                                          
+                                          <div class="col-md-5" style="padding:0px;">
+
+                                                  <div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onClick="add_clear(50000)">50</div></div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(100000)">100</div></div>
+                                                    </div>
+                                                  <div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(200000)">200</div></div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_clear(250000)">250</div></div>
+                                                  </div>
+                                                  <div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(10000)">+10</div></div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(20000)">+20</div></div>
+                                                  </div>
+                                                  <div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onclick="add_numeric(50000)">+50</div></div>
+                                                    <div class="col-md-6" style="padding:0px; padding-right:2px; padding-bottom:2px;"><div class="calc_button_right" onClick="add_numeric(100000)">+100</div></div>
+                                                  </div>
+                                            
+                                            </div>
+                                            <div class="col-md-7" style="padding:0px;">
+                                                  <div style="border-top-left-radius:5px; border-top-right-radius:5px;">
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-top-left-radius:5px;" onclick="add_non_numeric(1)">1</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button"  onclick="add_non_numeric(2)">2</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-top-right-radius:5px;"  onclick="add_non_numeric(3)">3</div></div>
+                                                  </div>
+                                                  <div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(4)">4</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(5)">5</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(6)">6</div></div>
+                                                  </div>
+                                                  <div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(7)">7</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(8)">8</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric(9)">9</div></div>
+                                                  </div>
+
+                                                  <div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-bottom-left-radius:5px;" onclick="add_clear(0)">C</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" onclick="add_non_numeric('0')">0</div></div>
+                                                    <div class="col-md-4" style="padding:0px;"><div class="calc_button" style="border-bottom-right-radius:5px;">.</div></div>
+                                                  </div>
+                                                 
+
+                                            </div>
+
+                                         </div>
+
+                                      </div>
+                                    </div>
                                    
 
                                   </div>
@@ -430,13 +445,28 @@ if(!$_SESSION['login']){
                                             ?>
                                             <tr>
                                             <td width="10%" valign="top"><?= $row_item['transaction_detail_qty'] ?></td>
-                                            <td valign="top"><?= $row_item['menu_name'] ?></td>
+                                            <td valign="top"><?php
+											echo $row_item['menu_name'];
+											if($row_item['transaction_detail_compliment_status'] == 1){ echo "(C)"; }
+											?></td>
                                             
-                                            <td align="right" valign="top"><?= number_format($row_item['transaction_detail_total']) ?></td>
+                                            <td align="right" valign="top"><?php
+											if($row_item['transaction_detail_compliment_status'] == 1){
+												$jumlah_comp1 = $row_item['transaction_detail_qty'] - 1;
+											}else{
+												$jumlah_comp1 = $row_item['transaction_detail_qty'];
+											}
+											$total_comp1 = $jumlah_comp1 * $row_item['transaction_detail_grand_price'];
+											
+											echo number_format($total_comp1) ?></td>
                                             </tr>
                                             <?php
                       $no_item++;
-                       $total_price = $total_price + $row_item['transaction_detail_total'];
+					  
+					  						
+                     							
+                                              	$total_price = $total_price + $total_comp1;
+					  
                                             }
                                             ?>
 
@@ -467,6 +497,30 @@ if(!$_SESSION['login']){
 
                             </div>
                           </div>
+							<br>
+                          	<div class="payment_widget_frame">
+                             	<div class="payment_widget_content">
+                                <?php
+                                /*
+                                $query_mt = mysql_query("select * from menu_types order by menu_type_id");
+								while($row_mt = mysql_fetch_array($query_mt)){
+								?>
+                                <div class="form-group">
+                             		 <a target="_blank" href="print_order.php?table_id=<?= $_GET['table_id']?>&building_id=<?= $_GET['building_id']?>&mt_id=<?= $row_mt['menu_type_id']?>" class="btn btn-success btn-block " >Print <?= $row_mt['menu_type_name'] ?></a>
+                                     </div>
+                                <?php
+								}
+                */
+								?>
+
+                               <a target="_blank" href="print_order.php?table_id=<?= $_GET['table_id']?>&building_id=<?= $_GET['building_id']?>" class="btn btn-success btn-block " >Print </a>
+                                     </div>
+                  
+                                     
+                                     
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -507,7 +561,9 @@ if(!$_SESSION['login']){
 
     function update_discount(){
        var total = parseFloat(document.getElementById("i_total").value);
-       var discount = parseFloat(document.getElementById("i_discount").value);
+	   var discount_persen = parseFloat(document.getElementById("i_discount_persen").value);
+       var discount = discount_persen / 100 * total;
+	   document.getElementById("i_discount").value = discount;
        
         if(discount > total){
          alert("Discount tidak boleh melebihi total harga");

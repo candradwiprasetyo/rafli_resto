@@ -52,7 +52,7 @@
                           
                            <div class="title_page"> <?= $title ?></div>
 
-                             <form role="form" action="<?= $action?>" method="post">
+                             <form role="form" action="<?= $action?>" method="post" enctype="multipart/form-data">
 
                             <div class="box box-primary">
                                 
@@ -84,13 +84,13 @@
                                         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input   type="password" name="i_password" class="form-control" placeholder="Enter password ..." value=""/>
+                                            <input required   type="password" name="i_password" class="form-control" placeholder="Enter password ..." value=""/>
                                             
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input   type="password" name="i_confirm_password" class="form-control" placeholder="Enter confirm password ..." value=""/>
+                                            <input required  type="password" name="i_confirm_password" class="form-control" placeholder="Enter confirm password ..." value=""/>
                                         </div>
                                         
                                          

@@ -122,7 +122,22 @@ switch ($page) {
 				$jumlah = ($_POST['i_jumlah_'.$row['menu_id']]) ? $_POST['i_jumlah_'.$row['menu_id']] : 0;
 				
 				if($jumlah > 0){
-					$total = $jumlah * $row['menu_price'];
+					
+					$get_compliment_status = get_compliment_status_manual($row['menu_id'], $i_table_id);
+					/*
+					if($get_compliment_status == 1){
+						if($jumlah == 1){
+							$harga = 0;
+						}else{
+							$harga = $row['branch_menu_price'];
+						}
+					}else{
+						$harga = $row['branch_menu_price'];
+					}*/
+					
+					$harga = $row['branch_menu_price'];
+					
+					$total = $jumlah * $harga;
 					
 					$check_history = check_history($i_table_id, $row['menu_id']);
 					
@@ -133,10 +148,11 @@ switch ($page) {
 						
 						//$new_qty = $row_history['transaction_detail_qty'] + $jumlah;
 						$new_qty = $jumlah;
-						$new_total = $new_qty * $row['menu_price'];
+						$new_total = $new_qty * $harga;
 						
 						$data_detail = "transaction_detail_qty = '$new_qty', 
-										transaction_detail_total = '$new_total'
+										transaction_detail_total = '$new_total',
+										transaction_detail_compliment_status = '$get_compliment_status'
 									";
 						update_config("transaction_tmp_details", $data_detail, "transaction_detail_id", $row_history['transaction_detail_id']);
 					
@@ -147,12 +163,13 @@ switch ($page) {
 									'".$row['menu_id']."',
 									'".$row['menu_original_price']."',
 									'".$row['menu_margin_price']."',
-									'".$row['menu_price']."',
+									'".$harga."',
 									'0',
-									'".$row['menu_price']."',
+									'".$harga."',
 									'$jumlah',
 									'$total',
-									'0'
+									'0',
+									'$get_compliment_status'
 									";
 						create_config("transaction_tmp_details", $data_detail);
 					}
@@ -270,7 +287,8 @@ switch ($page) {
 						'$menu_id',
 						'$jumlah',
 						'$table_id',
-						''
+						'',
+						'0'
 							";
 				
 				create_config("widget_tmp", $data);
@@ -356,6 +374,21 @@ switch ($page) {
 
 	break;
 	
+	case 'get_compliment':
+		
+		$table_id = get_isset($_GET['table_id']);
+		$id = get_isset($_GET['id']);
+		
+		$get_compliment_status = get_compliment_status($id);
+		
+		if($get_compliment_status == 1){
+			update_compliment($id, 0);
+		}else{
+			update_compliment($id, 1);
+		}
+		header("Location: transaction.php?page=list&table_id=$table_id");
+		
+	break;
 }
 
 ?>

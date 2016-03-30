@@ -9,13 +9,13 @@
                               <div class="box-header" style="cursor: move;">
 <h3 class="box-title"><strong>Jumlah tamu per hari</strong></h3>
 </div>
-                                    <table id="" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
                                                 <th>Tanggal</th>
-                                                <th>12:00 - 16:00</th>
-                                                <th>16:00 - 20:00</th>
+                                                <th>10:00 - 16:00</th>
+                                                <th>16:00 - 22:00</th>
                                                 <th>Total</th>
                                             </tr>
                                         </thead>

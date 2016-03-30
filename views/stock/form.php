@@ -178,6 +178,10 @@ function go_to_payment(){
                         </div><!--/.col (right) -->
                     </div>   <!-- /.row -->
                     
+                    <?php
+                    if($id){
+					?>
+                    
                     <div class="row">
                         <div class="col-xs-12">
                             
@@ -257,6 +261,9 @@ function go_to_payment(){
 
                         </div>
                         
+                        <?php
+                        }
+						?>
                         
                     </div>
                 </section><!-- /.content -->

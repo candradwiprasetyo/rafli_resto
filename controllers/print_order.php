@@ -14,10 +14,13 @@ switch ($page) {
 		
 		$building_id = get_isset($_GET['building_id']);
 		$table_id = get_isset($_GET['table_id']);
+		$mt_id = '';//get_isset($_GET['mt_id']);
+		
+		//$mt_name = get_mt_name($mt_id);
 		
 		$query = select($table_id);
 		$row = mysql_fetch_array($query);
-		$query_item = select_item($table_id);
+		$query_item = select_item($table_id, $mt_id);
 		
 		$back_button = "order.php?table_id=$table_id&building_id=$building_id";
 		

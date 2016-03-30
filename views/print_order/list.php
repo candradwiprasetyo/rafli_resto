@@ -67,11 +67,26 @@ table{
 </div>
 <br />
 
+
+<?php
+$query_type = mysql_query("select * from menu_types order by menu_type_id");
+while($row_type = mysql_fetch_array($query_type)){
+
+$get_menu_exist = get_menu_exist($table_id, $row_type['menu_type_id']);
+if($get_menu_exist > 0){
+?>
+
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><?= "Meja : ". $row['table_name']?></td>
    
     <td align="right" ><?= $row['transaction_date'] ?></td>
+  </tr>
+  <tr>
+    <td><?= "Type : "; ?></td>
+   
+    <td align="right" ><?= $row_type['menu_type_name'] ?></td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -79,23 +94,25 @@ table{
   $no_item = 1;
   $total_price = 0;
  	
- $query = mysql_query("select a.*, b.menu_name from widget_tmp a 
+ $query_detail = mysql_query("select a.*, b.menu_name from widget_tmp a 
                                                                     join menus b on b.menu_id = a.menu_id
+																	join menu_types c on c.menu_type_id = b.menu_type_id
                                                                     where user_id = '".$_SESSION['user_id']."' 
                                                                     and table_id = '$table_id'
+																	and c.menu_type_id = '".$row_type['menu_type_id']."'
                                                                     order by a.wt_id");
-  while($row = mysql_fetch_array($query)){
+  while($row_detail = mysql_fetch_array($query_detail)){
   ?>
   <tr>&nbsp;
-    <td><?= $no_item. '. '.$row['menu_name'] ?></td>
-    <td align="right"><?=  $row['jumlah'] ?></td>
+    <td><?= $no_item. '. '.$row_detail['menu_name'] ?></td>
+    <td align="right"><?=  $row_detail['jumlah'] ?></td>
   </tr>
   
 <?php
                                             $query_widget_detail = mysql_query("select a.*, b.note_name
                                                                     from widget_tmp_details a
                                                                     join notes b on b.note_id = a.note_id
-                                                                    where wt_id = '".$row['wt_id']."'
+                                                                    where wt_id = '".$row_detail['wt_id']."'
                                                                     order by wt_id
 
                                                                     ");
@@ -128,10 +145,20 @@ table{
   </tr>
   
 </table>
+
 -->
-<br>
+
 <br>
 <hr>
+<br>
+
+
+
+<?php
+}
+}
+?>
+
 <br />
 
 <a href="order.php" style="text-decoration:none"><div class="back_to_order"></div></a>

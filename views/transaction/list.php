@@ -298,13 +298,16 @@ function load_data_history(id)
                   
                   <?php
                     $no2 = 1;
-          			$query = mysql_query("select b.* 
+          			$query = mysql_query("select a.branch_menu_price, b.* 
 											from branch_menus a  
 											join menus b on b.menu_id = a.menu_id
 											where b.menu_type_id = '".$row_cat['menu_type_id']."' 
 											and a.branch_id = '$branch_id'
 											order by b.menu_id");
                     while($row = mysql_fetch_array($query)){
+						
+						$cek_resep = cek_resep($row['menu_id'], $_SESSION['branch_id']);
+						if($cek_resep == 0){
                    ?>
                    
                   <div class="box-showcase 
@@ -327,7 +330,7 @@ function load_data_history(id)
                     <a onClick="add_menu(<?= $row['menu_id']?>)">
                     
                       <div class="title_menu">
-                          <?= $row['menu_name'] ?>
+                          <?= $row['menu_name']; ?>
                         </div>
                         
                         <div class="box-showcaseInner_frame">
@@ -344,7 +347,7 @@ function load_data_history(id)
                         <div class="box-showcaseDesc ">
                             <a onClick="add_menu(<?= $row['menu_id']?>)"> 
 
-                             <div class="box-showcaseDesc_price">Rp. <?= $row['menu_price'] ?></div>
+                             <div class="box-showcaseDesc_price">Rp. <?= $row['branch_menu_price'] ?></div>
                              </a>
                             <div class="box-showcaseDesc_by">
                               <div class="col-xs-8" style="padding:0px;">
@@ -353,7 +356,7 @@ function load_data_history(id)
 
                                 ?>
                                     <input required type="text" name="i_jumlah_<?= $row['menu_id'] ?>" id="i_jumlah_<?= $row['menu_id'] ?>" class="form-control text_menu" value="<?= $get_jumlah ?>" onchange="edit_menu(<?= $row['menu_id'] ?>)"/>
-                                <input type="hidden" name="i_harga_<?= $row['menu_id'] ?>" id="i_harga_<?= $row['menu_id'] ?>" class="form-control text_menu" value="<?= $row['menu_price'] ?>"/>
+                                <input type="hidden" name="i_harga_<?= $row['menu_id'] ?>" id="i_harga_<?= $row['menu_id'] ?>" class="form-control text_menu" value="<?= $row['branch_menu_price'] ?>"/>
                             </div>
                                 <div class="col-xs-4" style="padding:0px;">
                                   <a onClick="minus_menu(<?= $row['menu_id']?>)">
@@ -384,6 +387,7 @@ function load_data_history(id)
                     <?php
           $no2++;
                     }
+					}
                     ?>
                                 
                     <div style="clear:both;"></div>       
@@ -541,6 +545,10 @@ function edit_menu(id)
   document.getElementById("table_widget").style.display = 'inline';
 
   $("#table_widget").load('transaction.php?page=form_widget&menu_id='+id+'&jumlah='+jumlah+'&table_id='+<?= $table_id ?>);
+}
+
+function get_compliment(id){
+	window.location.href = 'transaction.php?page=get_compliment&table_id=<?= $_GET['table_id']; ?>&id=' + id;
 }
 
    </script>

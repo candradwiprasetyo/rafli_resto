@@ -234,7 +234,7 @@ img {
   background-color: #3c8dbc !important;
 }
 .bg-new-red{
-   background-color: #61c161  !important;
+   background-color: #636363  !important;
 }
 .bg-green {
   background-color: #00a65a !important;
@@ -602,10 +602,11 @@ body > .header .logo .icon {
 }
 .user-panel {
   padding: 10px;
-  background: #f6f6f6;
+  background: #444;
   padding-top: 20px;
   padding-bottom: 20px;
   text-align:center;
+  color:#fff;
 }
 .user-panel:before,
 .user-panel:after {
@@ -927,7 +928,7 @@ body > .header .logo .icon {
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
   height: 175px;
   padding: 10px;
-  background: #61c161;
+  background: #333;
   text-align: center;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
@@ -1212,8 +1213,8 @@ body > .header .logo .icon {
   -moz-border-radius: 2px;
   border-radius: 2px;
   margin-bottom: 15px;
-  color: #61c161;
-  font-weight: bold;
+  color: #333;
+  font-weight: normal;
   height: 110px;    
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -1268,7 +1269,7 @@ body > .header .logo .icon {
 }
 .small-box:hover {
   text-decoration: none;
-  color: #fc3339;
+  color: #333;
 }
 .small-box:hover .icon {
   animation-name: tansformAnimation;
@@ -1378,7 +1379,7 @@ body > .header .logo .icon {
   border-bottom-left-radius: 0;
   border-bottom: 1px solid #f4f4f4;
   color:#fff;
-  background:#61c161;
+  background:#a48ad4;
 }
 .box .box-header:before,
 .box .box-header:after {
@@ -2399,9 +2400,8 @@ Component: timeline
 */
 .form-box {
   width: 360px;
-  margin: 10px auto 0 auto;
+  margin: 100px auto 0 auto;
  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
- border-radius: 5px;
 
 }
 .form-box .header {
@@ -2421,17 +2421,14 @@ Component: timeline
   text-align: center;
   
   font-weight: 300;
-  color: #454140;
-  background:#fff;
+  color: #fff;
+  background:#a48ad4;
   
 }
 .form-box .body{
   background:#fff;
-  padding: 10px 20px;
-  padding-bottom: 30px;
+  padding: 20px 20px;
   color: #444;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
 .form-box .footer {
   
@@ -2448,7 +2445,7 @@ Component: timeline
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   background:#fff;
-  padding: 10px;
+  padding: 20px;
 }
 .form-box .body > .form-group,
 .form-box .footer > .form-group {
@@ -2461,7 +2458,7 @@ Component: timeline
 }
 .form-box .body > .btn,
 .form-box .footer > .btn {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .form-box .footer {
   -webkit-border-top-left-radius: 0;
@@ -2476,6 +2473,7 @@ Component: timeline
   border-top-right-radius: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
+  background:#f7f7f7;
 }
 @media (max-width: 767px) {
   .form-box {
@@ -2590,7 +2588,7 @@ Component: timeline
 .skin-blue .navbar .nav .open > a,
 .skin-blue .navbar .nav .open > a:hover,
 .skin-blue .navbar .nav .open > a:focus {
-  background: #61c161;
+  background: #a48ad4;
   color: #f6f6f6;
 }
 .skin-blue .navbar .navbar-right > .nav a {
@@ -2598,12 +2596,12 @@ Component: timeline
   height:80px;
 }
 .skin-blue .navbar .sidebar-toggle .icon-bar {
-  background: #61c161;
+  background: #a48ad4;
 }
 /* skin-blue logo */
 
 .skin-blue .logo {
-  background-color: #61c161;
+  background-color: #a48ad4;
   color: #333;
   font-family: arial;
   /*background: url('../img/new/logo.png') #fff no-repeat top center;*/
@@ -2637,10 +2635,10 @@ Component: timeline
 }
 
 .skin-blue .sidebar > .sidebar-menu > li:first-of-type {
-  border-top: 1px solid #eee;
+  /*border-top: 1px solid #eee;*/
 }
 .skin-blue .sidebar > .sidebar-menu > li:first-of-type > a {
-  border-top:0px solid  #eee; 
+  /*border-top:0px solid  #eee; */
 }
 .skin-blue .sidebar > .sidebar-menu > li > a {
   margin-right: 0px;
@@ -2648,7 +2646,7 @@ Component: timeline
 .skin-blue .sidebar > .sidebar-menu > li > a:hover,
 .skin-blue .sidebar > .sidebar-menu > li.active > a {
   color: #fff;
-  background:#61c161;
+  background:#a48ad4;
   
 }
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
@@ -2747,7 +2745,7 @@ Component: timeline
  */
 /* iCheck plugin Minimal skin, black
 ----------------------------------- */
-
+/*
 .icheckbox_minimal,
 .i_minimal {
   display: inline-block;
@@ -2802,6 +2800,7 @@ Component: timeline
     background-size: 200px 20px;
   }
 }
+*/
 
 /*----------OWN STYLE----------------*/
 
@@ -2809,7 +2808,8 @@ Component: timeline
 .dataTables_length select{ height:30px; padding:5px; border:1px solid #eee;}
 .dataTables_length select:focus{  border:1px solid #15A4FA; }
 
-.dataTables_filter { color:#999999; font-size:12px; margin-top:10px;}
+.dataTables_filter { color:#999999; font-size:12px; margin-top:10px; margin-left:10px;
+margin-right:10px;}
 .dataTables_filter input{ height:30px; padding:5px; border:1px solid #eee; }
 .dataTables_filter input:focus{  border:1px solid #15A4FA; }
 
@@ -2948,7 +2948,7 @@ Component: timeline
 	height:50px;
 	color:#fff;
 	border:none !important;
-	background:#61c161;
+	background:#a48ad4;
 }
 .title_menu{
 	
@@ -2973,7 +2973,7 @@ Component: timeline
 	 position:fixed;
 	 width:100%;
    padding-right: 250px;
-   border: 1px solid #61c161;
+   border: 1px solid #a48ad4;
    z-index:9999;
    
 }
@@ -3100,7 +3100,7 @@ Component: timeline
 	}
 
   .note_frame{
-    border:1px solid #61c161;
+    border:1px solid #a48ad4;
     padding: 10px;
   }
 
@@ -3211,7 +3211,7 @@ Component: timeline
   font-weight: bold;
   font-size: 18px !important;
   height: 50px;
-  color: #61c161;
+  color: #a48ad4;
 }
 
 .button_close_payment{
@@ -3224,7 +3224,7 @@ Component: timeline
   height: 50px;
   line-height: 38px;
   margin-left: 10px;
-  color: #61c161;
+  color: #a48ad4;
   width: 90%;
 }
 
@@ -3236,7 +3236,7 @@ Component: timeline
   padding: 15px;
   color: #fff;
   font-weight: bold;
-  background: #61c161;
+  background: #a48ad4;
 }
 
 .payment_widget_content{
@@ -3267,7 +3267,7 @@ Component: timeline
   width: 100%;
   height: 71px;
   line-height: 71px;
-  background: #61c161;
+  background: #a48ad4;
   color: #fff;
 font-weight: bold;
 text-align: center;
@@ -3282,7 +3282,7 @@ cursor: pointer;
   width: 100%;
   height: 70px;
   line-height: 70px;
-  background: #61c161;
+  background: #a48ad4;
   color: #fff;
 font-weight: bold;
 text-align: center;
@@ -3296,16 +3296,16 @@ cursor: pointer;
 
 
 .btn_cat_button{
-  border:1px solid #61c161;
+  border:1px solid #a48ad4;
   border-radius: 0px;
   font-size: 13px !important;
   font-weight: bold;
-  color: #61c161;
+  color: #a48ad4;
 }
 
 .btn_cat_button_active{
-  border:1px solid #61c161;
-  background: #61c161;
+  border:1px solid #a48ad4;
+  background: #a48ad4;
   border-radius: 0px;
   font-size: 13px !important;
   font-weight: bold;

@@ -15,13 +15,13 @@
                             <img src="<?= $img ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div>
-                            <p><?php
+                            <p><b><?php
                                        
                                         echo "Welcome, ".$user_data[0];
-                                        ?></p>
+                                        ?></b></p>
                                         
 
-                            <a><?= $user_data[1]?> cabang <?= $user_data[3]?></a>
+                            <?= $user_data[1]?> cabang <?= $user_data[3]?>
                         </div>
 
                        

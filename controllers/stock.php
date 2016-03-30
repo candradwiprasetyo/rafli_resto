@@ -97,9 +97,10 @@ switch ($page) {
 			
 			//echo $data;
 
-			create($data);
-		
-			header("Location: stock.php?page=list&did=1");
+			$id = create($data);
+			create_stock($id);
+			
+			header("Location: stock.php?page=form&id=$id");
 		
 		
 	break;

@@ -202,7 +202,7 @@ if(!$_SESSION['login']){
 	<?php
 	}else{
 	?>
-	<span onclick="add_order('<?= $row['table_id'] ?>')">
+	<span onClick="add_order('<?= $row['table_id'] ?>')">
 	<?php
 	}
 	?>
@@ -272,11 +272,13 @@ if(!$_SESSION['login']){
 	
   
 </div>
+<!--
 <div id="content_new_right">
 	<?php
-    include 'content_right.php';
+    //include 'content_right.php';
 	?>
 </div>
+-->
 <?php
 	}
 ?>

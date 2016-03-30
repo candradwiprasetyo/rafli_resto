@@ -13,7 +13,8 @@
                                             <tr>
                                             <th width="5%" style="padding:10px">Jumlah</th>
                                                 <th  style="padding:10px">Nama Menu</th>
-                                               
+                                                <th  style="padding:10px">C</th>
+                                                <th>Hapus</th>
                                             </tr>
                                         </thead>
                                       
@@ -24,7 +25,7 @@
 
                             </div><!-- /.box -->
                             
-                            <div class="box" style="margin-bottom:0px; padding-bottom:0px; overflow-y:auto; overflow-x:hidden; height:335px; background:#fff;">
+                            <div class="box" style="margin-bottom:0px; padding-bottom:0px; overflow-y:auto; overflow-x:hidden; height:280px; background:#fff;">
                            
                              
                                 <div class="">
@@ -33,7 +34,8 @@
                                         <tbody >
                                             <?php
                                            $no = 1;
-                                           $query_widget = mysql_query("select a.*, b.menu_name from widget_tmp a 
+                                           $query_widget = mysql_query("select a.*, b.menu_name 
+										   							from widget_tmp a 
                                                                     join menus b on b.menu_id = a.menu_id
                                                                     where user_id = '".$_SESSION['user_id']."' 
                                                                     and table_id = '$table_id'
@@ -46,6 +48,9 @@
                                            
                                                <td width="20%"><?= $row_widget['jumlah']?></td>
                                                 <td><?= $row_widget['menu_name']?></td>
+                                                <td><input type="checkbox" name="i_comp_<?= $row_widget['wt_id']?>" value="1" onclick="get_compliment('<?= $row_widget['wt_id']?>')" <?php if($row_widget['wt_compliment_status']==1 ){ ?> checked="checked"<?php }?> />
+                                                <input type="hidden" name="i_comp_status_<?= $row_widget['wt_id']?>" value="<?= $row_widget['wt_compliment_status']?>" />
+                                                </td>
                                                   <td style="text-align:center;">
 
                                                    <!-- <a href="transaction.php?page=note&table_id=<?= $table_id?>&wt_id=<?= $row_widget['wt_id']?>" class="btn btn-default" ><i class="fa fa-book"></i></a>-->

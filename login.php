@@ -21,15 +21,19 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-       
+        <style>
+		html, body{
+			background-color:#354052 !important;
+		}
+		</style>
     </head>
     <body >
 
-        <!--<div class="login_logo"></div>-->
-        <div class="form-box" id="login-box" style="margin-top:150px;">
-            <div class="header"><div class="bg-logo"><span style="font-size: 3em !important; color:#666"><strong>Mochi Maco</strong></span></div></div>
+        <div class="form-box" id="login-box">
+            <div class="header"><div class="bg-logo"><span style="font-size: 1.3em !important;"><strong>Mochi Maco</strong></span><br>System</div></div>
             <form action="controllers/login.php?page=login" method="post">
                 <div class="body bg-white">
+
                     <?php
                     if(isset($_GET['err'])){
                     ?>
@@ -43,18 +47,22 @@
                     <?php
                     }
                     ?>
+
+
+
                     <div class="form-group">
                         <input style="border:1px solid #eee;" required type="text" name="i_login" class="form-control" placeholder="User Login"/>
                     </div>
                     <div class="form-group">
                         <input style="border:1px solid #eee;" required type="password" name="i_password" class="form-control" placeholder="Password"/>
-                    </div>   
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-success btn-block" style="margin-top:10px;">LOGIN</button>  
                     </div>          
                   
                 </div>
-                
+                <div class="footer" >                                                               
+                    <button type="submit" class="btn btn-info btn-block">LOGIN</button>  
+                    
+                 
+                </div>
             </form>
 
 <div></div>

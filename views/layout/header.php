@@ -23,8 +23,8 @@ if(!$_SESSION['login']){
         <link href="../css/popModal.css" type="text/css" rel="stylesheet" >
         <!-- Preview -->
         <link href="../css/preview.css" type="text/css" rel="stylesheet" >
-         <!-- iCheck for checkboxes and radio inputs -->
-        <link href="../css/iCheck/all.css" rel="stylesheet" type="text/css" />
+         <!-- iCheck for checkboxes and radio inputs
+        <link href="../css/iCheck/all.css" rel="stylesheet" type="text/css" /> -->
          <!-- daterange picker -->
         <link href="../css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <!-- Bootstrap time Picker -->
@@ -40,6 +40,8 @@ if(!$_SESSION['login']){
        <link rel="stylesheet" type="text/css" href="../css/tooltip/tooltip-classic.css" />
        <!-- menu food -->
        <link href="../css/menu/menu.css" rel="stylesheet">
+        <!-- export -->
+       <link href="../css/export/buttons.dataTables.min.css" rel="stylesheet">
        
 	  
       

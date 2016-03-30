@@ -81,6 +81,7 @@ switch ($page) {
 		$i_payment = $_POST['i_payment'];
 		$i_change = $_POST['i_change'];
 		$i_discount = $_POST['i_discount'];
+		$i_discount_persen = $_POST['i_discount_persen'];
 		$i_grand_total = $_POST['i_grand_total'];
 		$i_payment_method = $_POST['i_payment_method'];
 		$i_bank_id = "";
@@ -140,7 +141,8 @@ switch ($page) {
 					'".$i_bank_account."',
 					'".$row['transaction_code']."',
 					'".$row['customer_number']."',
-					'".$row['tot_id']."'
+					'".$row['tot_id']."',
+					'".$i_discount_persen."'
 					
 			";
 			// simpan transaksi
@@ -168,7 +170,8 @@ switch ($page) {
 									'".$row_detail['transaction_detail_price_discount']."',
 									'".$row_detail['transaction_detail_grand_price']."',
 									'".$row_detail['transaction_detail_qty']."',
-									'".$row_detail['transaction_detail_total']."'
+									'".$row_detail['transaction_detail_total']."',
+									'".$row_detail['transaction_detail_compliment_status']."'
 									";
 					create_config("transaction_details", $data_detail);
 					

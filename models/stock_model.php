@@ -40,6 +40,15 @@ function read_id($id){
 
 function create($data){
 	mysql_query("insert into items values(".$data.")");
+	$id = mysql_insert_id();
+	return $id;
+}
+
+function create_stock($id){
+	$query = mysql_query("select * from branches order by branch_id");
+	while($row = mysql_fetch_array($query)){
+		mysql_query("insert into item_stocks values('', '$id', '0', '".$row['branch_id']."')");
+	}
 }
 
 function create_config($table, $data){
@@ -56,6 +65,12 @@ function get_stock($item_id, $branch_id){
 	
 	$result = ($row['result']) ? $row['result'] : "0";
 	return $result;
+}
+
+function delete($id){
+	mysql_query("delete from items where item_id  = '$id'");
+	
+	mysql_query("delete from item_stocks where item_id  = '$id'");
 }
 
 function delete_item($id){

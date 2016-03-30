@@ -44,20 +44,242 @@
 		<script src="../js/button/classie.js"></script>
       <!-- bootstrap time picker -->
       
+      <!-- export -->
+      <script src="../js/export/dataTables.buttons.min.js"></script>
+      <script src="../js/export/buttons.flash.min.js"></script>
+      <script src="../js/export/jszip.min.js"></script>
+      <script src="../js/export/pdfmake.min.js"></script>
+      <script src="../js/export/vfs_fonts.js"></script>
+      <script src="../js/export/buttons.html5.min.js"></script>
+      <script src="../js/export/buttons.print.min.js"></script>
+      
 		
  <!-- page script -->
         <script type="text/javascript">
+		$(document).ready(function() {
+			$('#example1').DataTable( {
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			} );
+		} );
             $(function() {
-                $("#example1").dataTable();
-                $('#example2').dataTable();
-				$("#example3").dataTable();
-				$("#example4").dataTable();
-                $("#example5").dataTable();
-                $("#example6").dataTable();
-                $("#example7").dataTable();
-                $("#example8").dataTable();
-                $("#example9").dataTable();
-                $("#example10").dataTable();
+                //$("#example1").dataTable();
+                $('#example2').dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+				$("#example3").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+				$("#example4").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example5").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example6").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example7").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example8").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example9").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
+                $("#example10").dataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					
+					{
+						extend: 'pageLength'
+					},
+					{
+						extend: 'copy'
+					},
+					{
+						extend: 'excel'
+					},
+					{
+						extend: 'pdf'
+					}
+				],
+				lengthMenu: [
+					[ 10, 25, 50, -1 ],
+					[ '10 rows', '25 rows', '50 rows', 'Show all' ]
+				]
+			});
 				
 				$('#example_scroll').dataTable({
                     "scrollX": true

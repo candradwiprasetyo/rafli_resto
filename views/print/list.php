@@ -69,8 +69,8 @@ table{
 
 <div class="header">
 <span style="font-size:18px;">Mochi Maco<br> </span><br>
-The Gayungsari<br />
-
+Jl klampis jaya 10 E<br />
+Surabaya
 
 </div>
 <br />
@@ -101,7 +101,12 @@ The Gayungsari<br />
   while($row_item = mysql_fetch_array($query_item)){
   ?>
   <tr>
-    <td><?= $row_item['menu_name'] ?></td>
+    <td><?php 
+	echo $row_item['menu_name'];
+	if($row_item['transaction_detail_compliment_status']){ echo "(C)"; }
+	
+	?></td>
+    
     <td align="right">&nbsp;</td>
   </tr>
   <tr>
@@ -109,16 +114,31 @@ The Gayungsari<br />
     <td align="right"><?= number_format($row_item['transaction_detail_total'])?></td>
   </tr>
   <?php
- $no_item++;
- $total_price = $total_price + $row_item['transaction_detail_total'];
+	if($row_item['transaction_detail_compliment_status'] == 1){
+		$jumlah_comp = $row_item['transaction_detail_qty'] - 1;
+	}else{
+		$jumlah_comp = $row_item['transaction_detail_qty'];
+	}
+	$total_comp = $jumlah_comp * $row_item['transaction_detail_grand_price'];
+ $total_price = $total_price + $total_comp;
+ 
+  $no_item++;
   }
  ?>
 </table>
 <br />
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:14px;">
   <tr>
-    <td style="font-size:18px"><strong>Total</strong></td>
-    <td style="font-size:18px" align="right"><strong><?= number_format($total_price)?></strong></td>
+    <td><strong>Total</strong></td>
+    <td align="right"><strong><?= number_format($total_price)?></strong></td>
+  </tr>
+   <tr>
+    <td><strong>Diskon</strong></td>
+    <td align="right"><strong><?= number_format($row['transaction_discount'])?></strong></td>
+  </tr>
+  <tr>
+    <td><strong>Grand Total</strong></td>
+    <td align="right"><strong><?= number_format($row['transaction_grand_total'])?></strong></td>
   </tr>
   <tr>
     <td><strong>Bayar</strong></td>
