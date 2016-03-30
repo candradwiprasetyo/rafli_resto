@@ -125,7 +125,7 @@ function get_total(){
 		<?php
 		while($row_item3 = mysql_fetch_array($query_item3)){
 		?>
-		total = parseFloat(total) + parseFloat(document.getElementById("i_total_<?=  $row_item3['transaction_internal_detail_id']; ?>").value);
+		total = parseFloat(total) + parseFloat(document.getElementById("i_total_<?= $row_item3['transaction_internal_detail_id']; ?>").value);
 		<?php
 		}
 		?>

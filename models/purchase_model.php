@@ -1,11 +1,9 @@
 <?php
 
 function select($where){
-	$query = mysql_query("select a.* , b.supplier_name,c.unit_name, d.item_name, e.branch_name
+	$query = mysql_query("select a.* , b.supplier_name, e.branch_name,(select sum(purchase_detail_price) from purchase_details z where z.purchase_id = a.purchase_id) as total
 							from purchases a
 							join suppliers b on b.supplier_id = a.supplier_id
-							join items d on d.item_id = a.item_id
-							join units c on c.unit_id = d.unit_id
 							join branches e on e.branch_id = a.branch_id
 							$where
 							order by purchase_id");
@@ -27,6 +25,16 @@ function select_item(){
 
 function select_branch(){
 	$query = mysql_query("select * from branches order by branch_id");
+	return $query;
+}
+
+function select_detail($id,$user_id){
+	 $query = mysql_query("select a.*,c.item_name
+							  from purchase_details a
+							  join items c on c.item_id = a.item_id
+							  where a.purchase_id = '$id' and a.user_id = $user_id
+							  order by a.purchase_detail_id 
+							  ");
 	return $query;
 }
 
@@ -95,5 +103,47 @@ function get_item_name($item_id){
 	
 	$result = ($row['result']);
 	return $result;
+}
+
+function create_config($table, $data){
+	mysql_query("insert into $table values(".$data.")");
+}
+
+function update_config($table, $data, $column, $id){
+	mysql_query("update $table set $data where $column = $id");
+}
+
+function update_detail($id, $user_id){
+	mysql_query("update purchase_details set purchase_id = $id where purchase_id = 0 and user_id = $user_id");
+}
+
+function select_detail_tmp($id){
+	 $query = mysql_query("select a.*,b.branch_id
+							  from purchase_details a
+							  join purchases b on b.purchase_id = a.purchase_id
+							  where a.purchase_id = $id
+							  order by a.purchase_detail_id 
+							  ");
+	return $query;
+}
+
+function select_stock($branch_id,$item_id){
+	$query = mysql_query("select * from item_stocks where branch_id = '$branch_id' and item_id = '$item_id'");
+	$row = mysql_fetch_array($query);
+	return $row;
+}
+
+function update_stock($branch_id, $item_id,$new_stock){
+	mysql_query("update item_stocks set item_stock_qty = $new_stock where item_id = $item_id and branch_id = $branch_id");
+}
+
+function delete_item($id){
+	mysql_query("delete from purchase_details where purchase_detail_id = '$id'");
+}
+
+function get_total($id){
+	$query = mysql_query("select (sum(purchase_detail_price)) as total from purchase_details where purchase_id = $id");
+	$row = mysql_fetch_array($query);
+	return $row;
 }
 ?>

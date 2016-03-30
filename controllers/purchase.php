@@ -32,7 +32,7 @@ switch ($page) {
 		$close_button = "purchase.php?page=list";
 		
 		$query_supplier = select_supplier();
-		$query_item = select_item();
+		//$query_item = select_item();
 		$query_branch = select_branch();
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
@@ -56,9 +56,15 @@ switch ($page) {
 			$row->branch_id = false;
 			$row->purchase_payment_type = false;
 			$row->purchase_code = false;
+			$row->purchase_id = false;
 			
 			$action = "purchase.php?page=save";
 		}
+		
+		$query_item = select_detail($id,$_SESSION['user_id']);
+		$query_item2 = select_detail($id,$_SESSION['user_id']);
+		$query_item3 = select_detail($id,$_SESSION['user_id']);
+		$query_item4 = select_detail($id,$_SESSION['user_id']);
 
 		include '../views/purchase/form.php';
 		get_footer();
@@ -71,9 +77,9 @@ switch ($page) {
 		
 		$i_date = get_isset($i_date);
 		$i_date = format_back_date($i_date);
-		$i_item_id = get_isset($i_item_id);
-		$i_harga = get_isset($i_harga);
-		$i_qty = get_isset($i_qty);
+		//$i_item_id = get_isset($i_item_id);
+		//$i_harga = get_isset($i_harga);
+		//$i_qty = get_isset($i_qty);
 		//$i_total = get_isset($i_total);
 		$i_supplier = get_isset($i_supplier);
 		$i_branch_id = get_isset($i_branch_id);
@@ -89,13 +95,13 @@ switch ($page) {
 
 		$tanggal = date("Y-m-d");
 		
-		$get_item_name = get_item_name($i_item_id);
+		//$get_item_name = get_item_name($i_item_id);
 		
 		$data = "'',
 					'$i_date', 
-					'$i_item_id', 
-					'$i_qty',
-					'$i_harga',
+					'0', 
+					'0',
+					'0',
 					'0',
 					'$i_supplier',
 					'$i_branch_id',
@@ -111,9 +117,23 @@ switch ($page) {
 			$data_id = mysql_insert_id();
 			
 			// simpan jurnal
-			create_journal($data_id, "purchase.php?page=form&id=", 2, $i_harga, $get_item_name, '', $i_branch_id);
+			$harga_total = get_total($data_id);
+			create_journal($data_id, "purchase.php?page=form&id=", 2, $harga_total['total'], $i_code, '', $i_branch_id);
 			
-			add_stock($i_item_id, $i_branch_id, $i_qty);
+			//add_stock($i_item_id, $i_branch_id, $i_qty);
+			
+			update_detail($data_id,$_SESSION['user_id']);
+		
+			$query_item = select_detail_tmp($data_id);
+			while($row_item = mysql_fetch_array($query_item)){
+				//echo $row_item['transaction_production_detail_id'];
+				//Minus stock
+				$select_stock = select_stock($row_item['branch_id'],$row_item['item_id']);
+				$stock_plus = $select_stock['item_stock_qty'] + $row_item['purchase_detail_qty'];
+				//echo $stock_plus;
+				update_stock($row_item['branch_id'],$row_item['item_id'],$stock_plus);	
+				
+			}
 		
 			header("Location: purchase.php?page=list&did=1");
 		
@@ -174,6 +194,65 @@ switch ($page) {
 		payment($id);
 
 		header('Location: purchase.php?page=list&did=4');
+
+	break;
+	
+	case 'add_menu';
+		$item_id = get_isset($_GET['item_id']);	
+		
+		$data = "'',
+					'0',
+					'$item_id',
+					'0', 
+					'0',
+					'".$_SESSION['user_id']."'
+					
+			";
+			
+			create_config("purchase_details", $data);
+			
+		header("Location: purchase.php?page=form");
+		
+	break;
+	
+	case 'edit_price':
+
+		$id = get_isset($_GET['id']);	
+		$qty = get_isset($_GET['qty']);
+		$price = get_isset($_GET['price']);		
+		
+		$data = "purchase_detail_qty = '$qty',
+				purchase_detail_price = '$price'
+				
+		";
+		
+		update_config("purchase_details", $data, "purchase_detail_id", $id);
+
+	break;
+	
+	case 'edit_qty':
+
+		$id = get_isset($_GET['id']);	
+		$qty = get_isset($_GET['qty']);
+		$price = get_isset($_GET['price']);		
+		
+		$data = "purchase_detail_qty = '$qty',
+				purchase_detail_price = '$price'
+				
+		";
+		
+		update_config("purchase_details", $data, "purchase_detail_id", $id);
+
+	break;
+	
+	case 'delete_item':
+	
+		$id = get_isset($_GET['id']);
+			
+		
+		delete_item($id);
+
+		header("Location: purchase.php?page=form");
 
 	break;
 }

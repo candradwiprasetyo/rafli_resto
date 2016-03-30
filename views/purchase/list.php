@@ -71,8 +71,8 @@
                                             	<th width="5%">No</th>
                                                 <th>Kode Transaksi</th>
                                             	<th width="5%">Tanggal</th>
-                                                <th>Nama Barang</th>
-                                                <th width="5%">Jumlah</th>
+                                                <!--<th>Nama Barang</th>
+                                                <th width="5%">Jumlah</th>-->
                                                 <th>Harga</th>
                                                 <th>Supplier</th>
                                                 <th>Cabang</th>
@@ -90,10 +90,10 @@
                                             <td><?= $no?></td>
                                                <td><?= $row['purchase_code']?></td>
                                                <td><?= format_date($row['purchase_date']); ?></td>
-                                                <td><?= $row['item_name']?></td>
+                                                <!--<td><?= $row['item_name']?></td>
                                                
-                                                <td><?= $row['purchase_qty']." (".$row['unit_name'].")"; ?></td>
-                                                <td><?= $row['purchase_price']?></td>
+                                                <td><?= $row['purchase_qty']." (".$row['unit_name'].")"; ?></td>-->
+                                                <td><?= $row['total']?></td>
                                                
                                                 <td><?= $row['supplier_name']?></td>
                                                 <td><?= $row['branch_name']?></td>
